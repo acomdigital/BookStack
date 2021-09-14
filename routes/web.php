@@ -262,6 +262,7 @@ Route::post('/register', 'Auth\RegisterController@postRegister');
 
 // SAML routes
 Route::post('/saml2/login', 'Auth\Saml2Controller@login');
+Route::get('/saml2/login', 'Auth\Saml2Controller@login');
 Route::get('/saml2/logout', 'Auth\Saml2Controller@logout');
 Route::get('/saml2/metadata', 'Auth\Saml2Controller@metadata');
 Route::get('/saml2/sls', 'Auth\Saml2Controller@sls');
