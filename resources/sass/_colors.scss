@@ -3,8 +3,13 @@
  */
 
 .primary-background {
-  background-color: var(--color-primary) !important;
+  background-color: var(--color-primary-light) !important;
+
+  @include whenDark {
+    background-color: #222 !important;
 }
+}
+
 .primary-background-light {
   background-color: var(--color-primary-light);
   @include whenDark {
@@ -42,7 +47,7 @@
 }
 
 .text-muted {
-  @include lightDark(color, #575757, #888888, true);
+  @include lightDark(color, #929292, #f6f6f6, true);
   fill: currentColor !important;
 }
 

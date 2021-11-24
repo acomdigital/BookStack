@@ -63,10 +63,12 @@
  */
 
 .card {
-  @include lightDark(background-color, #FFF, #222);
-  box-shadow: $bs-card;
-  border-radius: 3px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 20px 2px rgba(112, 112, 112, 0.25);
+  border-radius: 4px;
   border: 1px solid transparent;
+  padding-bottom: 40px;
+
   .body, p.empty-text {
     padding: $-m;
   }
@@ -74,15 +76,25 @@
     word-wrap: break-word;
     word-break: break-word;
   }
+
+  @include whenDark {
+    background: #222;
+    box-shadow: none;
+  }
 }
 
 .card-title {
-  padding: $-m $-m $-xs;
+  padding: 28px 28px 8px;
   margin: 0;
-  font-size: $fs-m;
-  color: #222;
+  font-size: 12px;
+  color: $text-dark;
   fill: #222;
-  font-weight: 400;
+  font-weight: 600;
+  line-height: 2;
+
+  @include whenDark {
+    color: $text-light;
+  }
 }
 .card-title a {
   line-height: 1;
@@ -190,7 +202,7 @@
   padding: $-m $-xxl;
   margin-inline-start: auto;
   margin-inline-end: auto;
-  margin-bottom: $-l;
+  margin-bottom: $-xl;
   overflow: initial;
   min-height: 60vh;
   &.auto-height {
@@ -239,13 +251,12 @@
   margin-bottom: $-xs;
   margin-inline-end: $-xs;
   border-radius: 4px;
-  border: 1px solid;
+  border: 1px solid #CCC;
   overflow: hidden;
   font-size: 0.85em;
-  @include lightDark(border-color, #CCC, #666);
-  a, span, a:hover, a:active {
+  a, a:hover, a:active {
     padding: 4px 8px;
-    @include lightDark(color, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.8));
+    @include lightDark(color, #777, #999);
     transition: background-color ease-in-out 80ms;
     text-decoration: none;
   }
@@ -253,11 +264,10 @@
     @include lightDark(background-color, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
   }
   svg {
-    @include lightDark(fill, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
+    fill: #888;
   }
   .tag-value {
-    border-inline-start: 1px solid;
-    @include lightDark(border-color, #DDD, #666);
+    border-inline-start: 1px solid #DDD;
     @include lightDark(background-color, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2))
   }
 }

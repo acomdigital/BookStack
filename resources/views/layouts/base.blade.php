@@ -15,6 +15,7 @@
     <meta property="og:title" content="{{ isset($pageTitle) ? $pageTitle . ' | ' : '' }}{{ setting('app-name') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     @stack('social-meta')
+    <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon" />
 
     <!-- Styles and Fonts -->
     <link rel="stylesheet" href="{{ versioned_asset('dist/styles.css') }}">
@@ -33,7 +34,6 @@
 </head>
 <body class="@yield('body-class')">
 
-    @include('common.skip-to-content')
     @include('common.notifications')
     @include('common.header')
 

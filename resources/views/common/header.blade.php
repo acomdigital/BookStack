@@ -4,7 +4,7 @@
         <div>
             <a href="{{ url('/') }}" class="logo">
                 @if(setting('app-logo', '') !== 'none')
-                    <img class="logo-image" src="{{ setting('app-logo', '') === '' ? url('/logo.png') : url(setting('app-logo', '')) }}" alt="Logo">
+                    <img class="logo-image" src="{{ setting('app-logo', '') === '' ? url('/ee-logo-2x.png') : url(setting('app-logo', '')) }}" alt="Logo">
                 @endif
                 @if (setting('app-name-header'))
                     <span class="logo-text">{{ setting('app-name') }}</span>
@@ -17,14 +17,14 @@
                     class="mobile-menu-toggle hide-over-l">@icon('more')</button>
         </div>
 
-        <div class="flex-container-row justify-center hide-under-l">
+        <div class="flex-container-row justify-center hide-under-l header-search">
             @if (hasAppAccess())
-            <form action="{{ url('/search') }}" method="GET" class="search-box" role="search">
-                <button id="header-search-box-button" type="submit" aria-label="{{ trans('common.search') }}" tabindex="-1">@icon('search') </button>
-                <input id="header-search-box-input" type="text" name="term"
-                       aria-label="{{ trans('common.search') }}" placeholder="{{ trans('common.search') }}"
-                       value="{{ isset($searchTerm) ? $searchTerm : '' }}">
-            </form>
+                <form action="{{ url('/search') }}" method="GET" class="search-box" role="search">
+                    <button id="header-search-box-button" type="submit" aria-label="{{ trans('common.search') }}" tabindex="-1">@icon('search') </button>
+                    <input id="header-search-box-input" type="text" name="term"
+                           aria-label="{{ trans('common.search') }}" placeholder="{{ trans('common.search') }}"
+                           value="{{ isset($searchTerm) ? $searchTerm : '' }}">
+                </form>
             @endif
         </div>
 

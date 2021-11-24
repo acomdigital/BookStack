@@ -17,7 +17,6 @@
 @import "codemirror";
 @import "components";
 @import "header";
-@import "footer";
 @import "lists";
 @import "pages";
 
@@ -136,23 +135,6 @@ $btt-size: 40px;
   }
 }
 
-.skip-to-content-link {
-  position: fixed;
-  top: -$-xxl;
-  left: 0;
-  background-color: #FFF;
-  z-index: 15;
-  border-radius: 0 4px 4px 0;
-  display: block;
-  box-shadow: $bs-dark;
-  font-weight: bold;
-  &:focus {
-    top: $-xl;
-    outline-offset: -10px;
-    outline: 2px dotted var(--color-primary);
-  }
-}
-
 .contained-search-box {
   display: flex;
   height: 38px;
@@ -212,12 +194,8 @@ $btt-size: 40px;
   .entity-list-item p {
     margin-bottom: 0;
   }
-  .entity-list-item:focus {
-    outline: 2px dotted var(--color-primary);
-    outline-offset: -4px;
-  }
   .entity-list-item.selected {
-    @include lightDark(background-color, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
+    background-color: rgba(0, 0, 0, 0.05) !important;
   }
   .loading {
     height: 400px;
@@ -285,14 +263,25 @@ $btt-size: 40px;
     margin-inline-start: $-s;
     grid-template-columns: minmax(120px, max-content) 40px;
     font-size: 0.9rem;
-    border: 2px solid #DDD;
-    @include lightDark(border-color, #ddd, #444);
+    border: 1px solid $border-color;
+    background: #f2f2f2;
+
+    @include whenDark {
+      background: none;
+      border: 1px solid $text-light;
+    }
+
     border-radius: 4px;
   }
   .list-sort-label {
     font-weight: bold;
     display: inline-block;
-    @include lightDark(color, #555, #888);
+    font-weight: 700;
+    color: $text-dark;
+
+    @include whenDark {
+      color: $text-light;
+    }
   }
   .list-sort-type {
     text-align: start;
@@ -300,11 +289,20 @@ $btt-size: 40px;
   .list-sort-type, .list-sort-dir {
     padding: $-xs $-s;
     cursor: pointer;
+    color: $text-dark;
+
+    @include whenDark {
+      color: $text-light;
+    }
   }
   .list-sort-dir {
-    border-inline-start: 2px solid #DDD;
+    border-inline-start: 1px solid $border-color;
     color: #888;
-    @include lightDark(border-color, #ddd, #444);
+
+    @include whenDark {
+      border-inline-start: 1px solid $text-light;
+    }
+
     .svg-icon {
       transition: transform ease-in-out 120ms;
     }
@@ -323,4 +321,31 @@ table.table .table-entity-item {
   display: grid;
   grid-template-columns: 36px 1fr;
   align-items: center;
+}
+
+#details {
+  a {
+    font-weight: 700;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 4px;
+}
+
+.tri-layout-middle {
+  @include whenDark() {
+    .grid-card, .card {
+      box-shadow: none !important;
+
+      &:hover {
+        box-shadow: none !important;
+      }
+    }
+  }
 }

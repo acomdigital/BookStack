@@ -185,7 +185,6 @@
     padding-bottom: $-xxs;
     background-clip: content-box;
     border-radius: 0 3px 3px 0;
-    padding-inline-end: 0;
     .content {
       padding-top: $-xs;
       padding-bottom: $-xs;
@@ -202,7 +201,6 @@
   .entity-list-item-name {
     font-size: 1em;
     margin: 0;
-    margin-inline-end: $-m;
   }
   .chapter-child-menu {
     font-size: .8rem;
@@ -319,8 +317,31 @@
   grid-column-gap: $-m;
   font-size: 0.9em;
 }
+
+.activity-list-item {
+  padding: 8px 0;
+  color: $text-dark;
+
+  a {
+    color: $text-dark;
+    font-weight: 700;
+
+    @include whenDark {
+      color: $text-light;
+    }
+  }
+
+  small {
+    color: #2f2f2f;
+
+    @include whenDark {
+      color: $text-light;
+    }
+  }
+}
+
 .card .activity-list-item {
-  padding: $-s $-m;
+  padding: 8px 28px;
 }
 
 .user-list-item {
@@ -412,7 +433,7 @@ ul.pagination {
 }
 
 .entity-list-item, .icon-list-item {
-  padding: $-s $-m;
+  padding: 8px 28px;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -420,9 +441,26 @@ ul.pagination {
   width: 100%;
   position: relative;
   word-break: break-word;
+
   h4 a {
-    color: #666;
+    color: $text-dark;
+    font-weight: 700;
+
+
+    @include whenDark {
+      color: $text-light;
+    }
   }
+
+  h4 {
+    color: $text-dark;
+    font-weight: 700;
+
+    @include whenDark {
+      color: $text-light;
+    }
+  }
+
   > span:first-child {
     margin-inline-end: $-m;
     flex-basis: 1.88em;
@@ -438,13 +476,13 @@ ul.pagination {
   &:not(.no-hover) {
     cursor: pointer;
   }
-  &:not(.no-hover):hover {
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
+
+  &.outline-hover {
+    border: 1px solid transparent;
   }
   &.outline-hover:hover {
     background-color: transparent;
+    border-color: rgba(0, 0, 0, 0.1);
   }
   &:focus {
     @include lightDark(background-color, #eee, #222);
@@ -463,12 +501,6 @@ ul.pagination {
   }
 }
 
-.card .entity-list-item:not(.no-hover):hover {
-  @include lightDark(background-color, #F2F2F2, #2d2d2d)
-}
-.card .entity-list-item .entity-list-item:hover {
-  background-color: #EEEEEE;
-}
 
 .entity-list-item-children {
   padding: $-m;
@@ -528,8 +560,12 @@ ul.pagination {
     display: none;
   }
   .entity-list-item p {
-    font-size: $fs-m * 0.8;
+    font-size: 12px;
     padding-top: $-xs;
+
+    @include whenDark {
+      color: $text-light;
+    }
   }
   p {
     margin: 0;
@@ -541,21 +577,13 @@ ul.pagination {
   hr {
     margin: 0;
   }
+  a:hover {
+    text-decoration: none;
+  }
   @include smaller-than($m) {
     h4 {
       font-size: 1.666em;
     }
-  }
-}
-
-.entity-item-tags {
-  font-size: .75rem;
-  opacity: 1;
-  .primary-background-light {
-    background: transparent;
-  }
-  .tag-name {
-    background-color: rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -578,6 +606,7 @@ ul.pagination {
   border-radius: 1px;
   min-width: 180px;
   padding: $-xs 0;
+
   @include lightDark(color, #555, #eee);
   fill: currentColor;
   text-align: start !important;
@@ -601,11 +630,17 @@ ul.pagination {
     white-space: nowrap;
     line-height: 1.6;
     cursor: pointer;
+
     &:hover, &:focus {
       text-decoration: none;
       background-color: var(--color-primary-light);
       color: var(--color-primary);
+
+      @include whenDark {
+        color: $text-dark;
+      }
     }
+
     &:focus {
       outline: 1px solid var(--color-primary);
       outline-offset: -2px;
@@ -675,9 +710,10 @@ ul.pagination {
   a {
     display: inline-block;
     padding: $-s;
+    @include lightDark(color, #2f2f2f, $text-light);
   }
   a:not(.active) {
-    @include lightDark(color, #444, #666);
+    @include lightDark(color, $text-dark, $text-dark);
   }
   a:hover {
     @include lightDark(background-color, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));

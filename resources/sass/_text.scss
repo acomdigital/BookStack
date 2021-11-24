@@ -42,7 +42,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   position: relative;
   display: block;
-  @include lightDark(color, #222, #BBB);
+  color: $text-dark;
+
+
+  @include whenDark {
+    color: $text-light;
+  }
+
   .subheader {
     font-size: 0.5em;
     line-height: 1em;
@@ -112,13 +118,6 @@ a {
   }
 }
 
-a.no-link-style {
-  color: inherit;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 .blended-links a {
   color: inherit;
   svg {
@@ -141,9 +140,6 @@ hr {
   margin-bottom: $-l;
   &.faded {
     background-image: linear-gradient(to right, #FFF, #e3e0e0 20%, #e3e0e0 80%, #FFF);
-  }
-  &.darker {
-    @include lightDark(background, #DDD, #666);
   }
   &.margin-top, &.even {
     margin-top: $-l;
@@ -280,9 +276,13 @@ ul, ol {
   }
 }
 ul {
+  padding-left: $-m * 1.3;
+  padding-right: $-m * 1.3;
   list-style: disc;
   ul {
     list-style: circle;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   label {
     margin: 0;
@@ -291,33 +291,23 @@ ul {
 
 ol {
   list-style: decimal;
-}
-
-ol, ul {
-  padding-left: $-m * 2.0;
-  padding-right: $-m * 2.0;
-}
-
-li > ol, li > ul {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-block-end: 0;
-  margin-block-start: 0;
-  padding-block-end: 0;
-  padding-block-start: 0;
-  padding-left: $-m * 1.2;
-  padding-right: $-m * 1.2;
+  padding-left: $-m * 2;
+  padding-right: $-m * 2;
 }
 
 li.checkbox-item, li.task-list-item {
   list-style: none;
-  margin-left: -($-m * 1.2);
+  margin-left: - ($-m * 1.3);
   input[type="checkbox"] {
     margin-right: $-xs;
   }
-  li.checkbox-item, li.task-list-item {
-    margin-left: $-xs;
-  }
+}
+
+li > ol, li > ul {
+  margin-block-end: 0px;
+  margin-block-start: 0px;
+  padding-block-end: 0px;
+  padding-block-start: 0px;
 }
 
 /*
