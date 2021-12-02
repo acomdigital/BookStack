@@ -89,6 +89,9 @@ header {
 
 .header-search {
   display: inline-block;
+  @include larger-than($l) {
+    margin: 0 0 0 150px;
+  }
 }
 header .search-box {
   display: inline-block;

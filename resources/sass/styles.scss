@@ -349,3 +349,25 @@ table.table .table-entity-item {
     }
   }
 }
+/*remove bg in header*/
+
+#content {
+  padding-top: 0;
+}
+.books-page-edit{
+  .page-editor{
+    z-index: 1;
+  }
+  .toolbar.page-edit-toolbar{
+    background: #fff;
+  }
+  .title-input.page-title{
+    z-index: 100;
+    position: relative;
+    margin: 0 0 2px;
+    input[type=text]{
+      background: #fff;
+      border-radius: 4px;
+    }
+  }
+}
