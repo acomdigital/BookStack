@@ -1,6 +1,7 @@
 @use "sass:math";
 
 @import "reset";
+@import "fonts";
 @import "variables";
 @import "mixins";
 @import "spacing";
@@ -324,3 +325,6 @@ table.table .table-entity-item {
   grid-template-columns: 36px 1fr;
   align-items: center;
 }
+
+@import "custom-variables";
+@import "custom-styles";

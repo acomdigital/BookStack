@@ -4,7 +4,7 @@
     <script src="{{ url('/libs/tinymce/tinymce.min.js?ver=5.10.2') }}" nonce="{{ $cspNonce }}"></script>
 @stop
 
-@section('body-class', 'flexbox')
+@section('body-class', 'flexbox books-page-edit')
 
 @section('content')
 

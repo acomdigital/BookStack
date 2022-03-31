@@ -29,3 +29,6 @@ window.trans_plural = translator.parsePlural.bind(translator);
 // Load Components
 import components from "./components"
 components();
+
+// Load header
+import "./addons/header"

@@ -303,6 +303,7 @@ Route::post('/register', [Auth\RegisterController::class, 'postRegister']);
 
 // SAML routes
 Route::post('/saml2/login', [Auth\Saml2Controller::class, 'login']);
+Route::get('/saml2/login', [Auth\Saml2Controller::class, 'login']);
 Route::post('/saml2/logout', [Auth\Saml2Controller::class, 'logout']);
 Route::get('/saml2/metadata', [Auth\Saml2Controller::class, 'metadata']);
 Route::get('/saml2/sls', [Auth\Saml2Controller::class, 'sls']);

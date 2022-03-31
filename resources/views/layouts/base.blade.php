@@ -10,6 +10,7 @@
     <meta name="token" content="{{ csrf_token() }}">
     <meta name="base-url" content="{{ url('/') }}">
     <meta charset="utf-8">
+    <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon" />
 
     <!-- Social Cards Meta -->
     <meta property="og:title" content="{{ isset($pageTitle) ? $pageTitle . ' | ' : '' }}{{ setting('app-name') }}">
