@@ -131,13 +131,11 @@ li.checkbox-item, li.task-list-item {
   margin-bottom: $-xl;
 
   .page-content {
-    p {
-      a {
-        color: #88B1CF;
+    a {
+      color: #88B1CF;
 
-        &:hover {
-          text-decoration: underline;
-        }
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
