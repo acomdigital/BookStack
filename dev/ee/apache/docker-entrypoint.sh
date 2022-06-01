@@ -87,9 +87,9 @@ fi
 
 echoerr "wait-for-db: waiting for ${DB_HOST_NAME}:${DB_PORT}"
 
-timeout 15 bash <<EOT
+timeout 30 bash <<EOT
 while ! (echo > /dev/tcp/${DB_HOST_NAME}/${DB_PORT}) >/dev/null 2>&1;
-    do sleep 1;
+    do sleep 5;
 done;
 EOT
 RESULT=$?
