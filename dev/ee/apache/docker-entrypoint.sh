@@ -87,10 +87,9 @@ fi
 
 echoerr "wait-for-db: waiting for ${DB_HOST_NAME}:${DB_PORT}"
 
-timeout 30 bash <<EOT
+timeout 15 bash <<EOT
 while ! (echo > /dev/tcp/${DB_HOST_NAME}/${DB_PORT}) >/dev/null 2>&1;
-    echo "wait..."
-    do sleep 2;
+    do sleep 1;
 done;
 EOT
 RESULT=$?
@@ -100,7 +99,7 @@ if [ $RESULT -eq 0 ]; then
   sleep 1
   echoerr "wait-for-db: done"
 else
-  echoerr "wait-for-db: timeout out after 30 seconds waiting for ${DB_HOST_NAME}:${DB_PORT}"
+  echoerr "wait-for-db: timeout out after 15 seconds waiting for ${DB_HOST_NAME}:${DB_PORT}"
 fi
 
 echo "Generating Key..."

@@ -1,3 +1,8 @@
 dev
+!dev/build
+!dev/ee
 .github
 .git
+node_modules
+vendor
+public/dist
