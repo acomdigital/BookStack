@@ -99,7 +99,7 @@ if [ $RESULT -eq 0 ]; then
   sleep 1
   echoerr "wait-for-db: done"
 else
-  echoerr "wait-for-db: timeout out after 15 seconds waiting for ${DB_HOST_NAME}:${DB_PORT}"
+  echoerr "wait-for-db: timeout out after 30 seconds waiting for ${DB_HOST_NAME}:${DB_PORT}"
 fi
 
 echo "Generating Key..."
