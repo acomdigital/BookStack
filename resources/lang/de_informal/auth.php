@@ -38,6 +38,11 @@ return [
     'registration_email_domain_invalid' => 'Du kannst dich mit dieser E-Mail nicht registrieren.',
     'register_success' => 'Vielen Dank für deine Registrierung! Du bist jetzt registriert und eingeloggt.',
 
+    // Login auto-initiation
+    'auto_init_starting' => 'Anmeldeversuche',
+    'auto_init_starting_desc' => 'Wir verbinden und mit Ihrem Authentifizierungssystem um den Anmeldeprozess zu starten. Sollte es nach 5 Sekunden nicht weitergehen, klicken Sie bitte auf den unten stehenden Link.',
+    'auto_init_start_link' => 'Mit Authentifizierung fortfahren',
+
     // Password Reset
     'reset_password' => 'Passwort vergessen',
     'reset_password_send_instructions' => 'Bitte gib Deine E-Mail-Adresse ein. Danach erhältst Du eine E-Mail mit einem Link zum Zurücksetzen Deines Passwortes.',

@@ -454,7 +454,15 @@ class ExportTest extends TestCase
 
         foreach ($entities as $entity) {
             $resp = $this->asEditor()->get($entity->getUrl('/export/html'));
-            $resp->assertElementExists('head meta[http-equiv="Content-Security-Policy"][content*="script-src "]');
+            $this->withHtml($resp)->assertElementExists('head meta[http-equiv="Content-Security-Policy"][content*="script-src "]');
         }
+    }
+
+    public function test_html_exports_contain_body_classes_for_export_identification()
+    {
+        $page = Page::query()->first();
+
+        $resp = $this->asEditor()->get($page->getUrl('/export/html'));
+        $this->withHtml($resp)->assertElementExists('body.export.export-format-html.export-engine-none');
     }
 }

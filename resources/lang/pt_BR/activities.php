@@ -28,6 +28,8 @@ return [
     // Books
     'book_create'                 => 'criou o livro',
     'book_create_notification'    => 'Livro criado com sucesso',
+    'book_create_from_chapter'              => 'capítulo convertido em livro',
+    'book_create_from_chapter_notification' => 'Capítulo convertido com sucesso em um livro',
     'book_update'                 => 'atualizou o livro',
     'book_update_notification'    => 'Livro atualizado com sucesso',
     'book_delete'                 => 'excluiu o livro',
@@ -38,6 +40,8 @@ return [
     // Bookshelves
     'bookshelf_create'            => 'prateleira criada',
     'bookshelf_create_notification'    => 'Prateleira criada com sucesso',
+    'bookshelf_create_from_book'    => 'livro convertido em estante',
+    'bookshelf_create_from_book_notification'    => 'Capítulo convertido com sucesso em um livro',
     'bookshelf_update'                 => 'atualizou a prateleira',
     'bookshelf_update_notification'    => 'Prateleira atualizada com sucesso',
     'bookshelf_delete'                 => 'excluiu a prateleira',

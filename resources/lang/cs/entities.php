@@ -24,6 +24,7 @@ return [
     'meta_updated_name' => 'Aktualizováno :timeLength uživatelem :user',
     'meta_owned_name' => 'Vlastník :user',
     'entity_select' => 'Výběr entity',
+    'entity_select_lack_permission' => 'You don\'t have the required permissions to select this item',
     'images' => 'Obrázky',
     'my_recent_drafts' => 'Mé nedávné koncepty',
     'my_recently_viewed' => 'Mé nedávno zobrazené',
@@ -87,7 +88,7 @@ return [
     'shelves_save' => 'Uložit knihovnu',
     'shelves_books' => 'Knihy v této knihovně',
     'shelves_add_books' => 'Přidat knihy do knihovny',
-    'shelves_drag_books' => 'Knihu přidáte jejím přetažením sem',
+    'shelves_drag_books' => 'Drag books below to add them to this shelf',
     'shelves_empty_contents' => 'Tato knihovna neobsahuje žádné knihy',
     'shelves_edit_and_assign' => 'Upravit knihovnu a přiřadit knihy',
     'shelves_edit_named' => 'Upravit knihovnu :name',
@@ -170,6 +171,7 @@ return [
     'chapters_permissions_active' => 'Oprávnění kapitoly byla aktivována',
     'chapters_permissions_success' => 'Oprávnění kapitoly byla aktualizována',
     'chapters_search_this' => 'Prohledat tuto kapitolu',
+    'chapter_sort_book' => 'Sort Book',
 
     // Pages
     'page' => 'Stránka',
@@ -247,7 +249,7 @@ return [
     'pages_permissions_active' => 'Oprávnění stránky byla aktivována',
     'pages_initial_revision' => 'První vydání',
     'pages_initial_name' => 'Nová stránka',
-    'pages_editing_draft_notification' => 'Právě upravujete koncept, který byl uložen před :timeDiff.',
+    'pages_editing_draft_notification' => 'Právě upravujete koncept, který byl uložen :timeDiff.',
     'pages_draft_edited_notification' => 'Tato stránka se od té doby změnila. Je doporučeno aktuální koncept zahodit.',
     'pages_draft_page_changed_since_creation' => 'Tato stránka byla aktualizována od vytvoření tohoto konceptu. Doporučuje se zrušit tento koncept nebo se postarat o to, abyste si nepřepsali žádné již zadané změny.',
     'pages_draft_edit_active' => [
@@ -355,4 +357,16 @@ return [
     'copy_consider_images' => 'Page image files will not be duplicated & the original images will retain their relation to the page they were originally uploaded to.',
     'copy_consider_attachments' => 'Přílohy stránky nebudou zkopírovány.',
     'copy_consider_access' => 'Po změně umístění, vlastníka nebo oprávnění může dojít k tomu, že obsah může být přístupný těm, kteří přístup dříve něměli.',
+
+    // Conversions
+    'convert_to_shelf' => 'Convert to Shelf',
+    'convert_to_shelf_contents_desc' => 'You can convert this book to a new shelf with the same contents. Chapters contained within this book will be converted to new books. If this book contains any pages, that are not in a chapter, this book will be renamed and contain such pages, and this book will become part of the new shelf.',
+    'convert_to_shelf_permissions_desc' => 'Any permissions set on this book will be copied to the new shelf and to all new child books that don\'t have their own permissions enforced. Note that permissions on shelves do not auto-cascade to content within, as they do for books.',
+    'convert_book' => 'Convert Book',
+    'convert_book_confirm' => 'Are you sure you want to convert this book?',
+    'convert_undo_warning' => 'This cannot be as easily undone.',
+    'convert_to_book' => 'Convert to Book',
+    'convert_to_book_desc' => 'You can convert this chapter to a new book with the same contents. Any permissions set on this chapter will be copied to the new book but any inherited permissions, from the parent book, will not be copied which could lead to a change of access control.',
+    'convert_chapter' => 'Convert Chapter',
+    'convert_chapter_confirm' => 'Are you sure you want to convert this chapter?',
 ];

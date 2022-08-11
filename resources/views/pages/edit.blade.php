@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('body-class', 'flexbox books-page-edit')
+@push('body-class', 'flexbox books-page-edit ')
 
 @section('content')
 

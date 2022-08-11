@@ -38,6 +38,11 @@ return [
     'registration_email_domain_invalid' => 'Dit e-maildomein is niet toegestaan',
     'register_success' => 'Bedankt voor het aanmelden! Je bent nu geregistreerd en aangemeld.',
 
+    // Login auto-initiation
+    'auto_init_starting' => 'Poging tot inloggen',
+    'auto_init_starting_desc' => 'We maken contact met uw authenticatiesysteem om het inlogproces te starten. Als er na 5 seconden geen vooruitgang is, kunt u proberen op de onderstaande link te klikken.',
+    'auto_init_start_link' => 'Ga verder met authenticatie',
+
     // Password Reset
     'reset_password' => 'Wachtwoord herstellen',
     'reset_password_send_instructions' => 'Geef je e-mail en we sturen je een link om je wachtwoord te herstellen',

@@ -24,6 +24,7 @@ return [
     'meta_updated_name' => '更新: :timeLength (:user)',
     'meta_owned_name' => '所有者: :user',
     'entity_select' => 'エンティティ選択',
+    'entity_select_lack_permission' => 'You don\'t have the required permissions to select this item',
     'images' => '画像',
     'my_recent_drafts' => '最近の下書き',
     'my_recently_viewed' => '閲覧履歴',
@@ -87,7 +88,7 @@ return [
     'shelves_save' => '本棚を保存',
     'shelves_books' => 'この本棚のブック',
     'shelves_add_books' => 'この本棚にブックを追加',
-    'shelves_drag_books' => 'ブックをここにドラッグすると本棚に追加されます',
+    'shelves_drag_books' => 'Drag books below to add them to this shelf',
     'shelves_empty_contents' => 'この本棚にはブックが割り当てられていません。',
     'shelves_edit_and_assign' => '本棚を編集してブックを割り当てる',
     'shelves_edit_named' => '本棚「:name」を編集',
@@ -170,6 +171,7 @@ return [
     'chapters_permissions_active' => 'チャプターの権限は有効です',
     'chapters_permissions_success' => 'チャプターの権限を更新しました',
     'chapters_search_this' => 'このチャプターを検索',
+    'chapter_sort_book' => 'Sort Book',
 
     // Pages
     'page' => 'ページ',
@@ -328,7 +330,7 @@ return [
     'comment' => 'コメント',
     'comments' => 'コメント',
     'comment_add' => 'コメント追加',
-    'comment_placeholder' => 'コメントを記入してく下さい',
+    'comment_placeholder' => 'コメントを記入してください',
     'comment_count' => '{0} コメントはありません|[1,*] コメント:count件',
     'comment_save' => 'コメントを保存',
     'comment_saving' => 'コメントを保存中...',
@@ -355,4 +357,16 @@ return [
     'copy_consider_images' => 'ページの画像ファイルは複製されず、元の画像は最初にアップロードされたページとの関係を保持します。',
     'copy_consider_attachments' => 'ページの添付ファイルはコピーされません。',
     'copy_consider_access' => '場所、所有者または権限を変更すると、以前アクセスできなかったユーザーがこのコンテンツにアクセスできるようになる可能性があります。',
+
+    // Conversions
+    'convert_to_shelf' => '本棚に変換',
+    'convert_to_shelf_contents_desc' => 'このブックを同じ内容の新しい棚に変換できます。このブックに含まれるチャプターは新しいブックに変換されます。このブックにチャプター内にないページが含まれている場合、このブックは名前が変更され、そのようなページを含む新しい本棚の一部となります。',
+    'convert_to_shelf_permissions_desc' => 'このブックに設定されているすべての権限は、新しい本棚と、独自の権限が適用されていないすべての新しい子ブックにコピーされます。本棚の権限はブックの場合のように、内部のコンテンツに自動的に継承されないことに注意してください。',
+    'convert_book' => 'ブックを変換',
+    'convert_book_confirm' => 'このブックを変換してもよろしいですか？',
+    'convert_undo_warning' => 'これは簡単には元に戻せません。',
+    'convert_to_book' => 'ブックに変換',
+    'convert_to_book_desc' => 'このチャプターを同じ内容の新しいブックに変換できます。このチャプターで設定された権限は新しいブックにコピーされますが、親ブックから継承された権限はコピーされないため、アクセス制御が変更される可能性があります。',
+    'convert_chapter' => 'チャプターを変換',
+    'convert_chapter_confirm' => 'このチャプターを変換してもよろしいですか？',
 ];

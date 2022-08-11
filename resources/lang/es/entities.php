@@ -24,6 +24,7 @@ return [
     'meta_updated_name' => 'Actualizado :timeLength por :user',
     'meta_owned_name' => 'Propiedad de :user',
     'entity_select' => 'Seleccione entidad',
+    'entity_select_lack_permission' => 'No tiene los permisos necesarios para seleccionar este elemento',
     'images' => 'Imágenes',
     'my_recent_drafts' => 'Mis borradores recientes',
     'my_recently_viewed' => 'Mis visualizaciones recientes',
@@ -87,7 +88,7 @@ return [
     'shelves_save' => 'Guardar estante',
     'shelves_books' => 'Libros en este estante',
     'shelves_add_books' => 'Añadir libros a este estante',
-    'shelves_drag_books' => 'Arrastra libros aquí para añadirlos a este estante',
+    'shelves_drag_books' => 'Arrastra los libros a continuación para añadirlos a este estante',
     'shelves_empty_contents' => 'Este estante no tiene libros asignados',
     'shelves_edit_and_assign' => 'Editar el estante para asignar libros',
     'shelves_edit_named' => 'Editar estante :name',
@@ -170,6 +171,7 @@ return [
     'chapters_permissions_active' => 'Permisos de capítulo activos',
     'chapters_permissions_success' => 'Permisos de capítulo actualizados',
     'chapters_search_this' => 'Buscar este capítulo',
+    'chapter_sort_book' => 'Organizar Libro',
 
     // Pages
     'page' => 'Página',
@@ -355,4 +357,16 @@ return [
     'copy_consider_images' => 'Los archivos de imagen de de las páginas no serán duplicados y las imágenes originales conservarán su relación con la página a la que fueron subidos originalmente.',
     'copy_consider_attachments' => 'Los archivos adjuntos de la página no serán copiados.',
     'copy_consider_access' => 'Un cambio de ubicación, propietario o permisos puede resultar en que este contenido sea accesible para aquellos que anteriormente no tuvieran acceso.',
+
+    // Conversions
+    'convert_to_shelf' => 'Convertir a Estante',
+    'convert_to_shelf_contents_desc' => 'Puedes convertir este libro a un nuevo estante con el mismo contenido. Los capítulos contenidos en este libro se convertirán en libros nuevos. Si este libro contiene alguna página, que no esté en un capítulo, este libro será renombrado y contendrá tales páginas, y este libro pasará a formar parte del nuevo estante.',
+    'convert_to_shelf_permissions_desc' => 'Cualquier permiso establecido en este libro será copiado al nuevo estante y a todos los nuevos libros que no tengan sus propios permisos configurados. Tenga en cuenta que los permisos de los estantes no se aplican automáticamente sobre el contenido en su interior, como lo hacen para los libros.',
+    'convert_book' => 'Convertir Libro',
+    'convert_book_confirm' => '¿Está seguro de que desea borrar este libro?',
+    'convert_undo_warning' => 'Esto no puede revertirse de forma sencilla.',
+    'convert_to_book' => 'Convertir a Libro',
+    'convert_to_book_desc' => 'Puede convertir este capítulo en un nuevo libro con el mismo contenido. Cualquier permiso establecido en este capítulo será copiado al nuevo libro pero cualquier permiso heredado, del libro padre, no se copiará lo que podría conducir a un cambio de control de acceso.',
+    'convert_chapter' => 'Convertir Capítulo',
+    'convert_chapter_confirm' => '¿Estás seguro de que quieres convertir este capítulo?',
 ];

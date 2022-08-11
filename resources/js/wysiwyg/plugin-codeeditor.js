@@ -86,7 +86,13 @@ function defineCodeBlockCustomElement(editor) {
         getContent() {
             const code = this.querySelector('code') || this.querySelector('pre');
             const tempEl = document.createElement('pre');
-            tempEl.innerHTML = code.innerHTML.replace().replace(/<br\s*[\/]?>/gi ,'\n').replace(/\ufeff/g, '');
+            tempEl.innerHTML = code.innerHTML.replace(/\ufeff/g, '');
+
+            const brs = tempEl.querySelectorAll('br');
+            for (const br of brs) {
+                br.replaceWith('\n');
+            }
+
             return tempEl.textContent;
         }
 
@@ -178,7 +184,7 @@ function register(editor, url) {
     editor.on('PreInit', () => {
         editor.parser.addNodeFilter('pre', function(elms) {
             for (const el of elms) {
-                const wrapper = new tinymce.html.Node.create('code-block', {
+                const wrapper = tinymce.html.Node.create('code-block', {
                     contenteditable: 'false',
                 });
 

@@ -24,6 +24,7 @@ return [
     'meta_updated_name' => ':user tomonidan :timeLength da yangilangan',
     'meta_owned_name' => 'Egasi :user',
     'entity_select' => 'Entity Select',
+    'entity_select_lack_permission' => 'You don\'t have the required permissions to select this item',
     'images' => 'Rasmlar',
     'my_recent_drafts' => 'Mening oxirgi qoralamalarim',
     'my_recently_viewed' => 'Mening oxirgi ko\'rganlarim',
@@ -87,7 +88,7 @@ return [
     'shelves_save' => 'Save Shelf',
     'shelves_books' => 'Books on this shelf',
     'shelves_add_books' => 'Add books to this shelf',
-    'shelves_drag_books' => 'Drag books here to add them to this shelf',
+    'shelves_drag_books' => 'Drag books below to add them to this shelf',
     'shelves_empty_contents' => 'This shelf has no books assigned to it',
     'shelves_edit_and_assign' => 'Edit shelf to assign books',
     'shelves_edit_named' => 'Edit Bookshelf :name',
@@ -170,6 +171,7 @@ return [
     'chapters_permissions_active' => 'Chapter Permissions Active',
     'chapters_permissions_success' => 'Chapter Permissions Updated',
     'chapters_search_this' => 'Search this chapter',
+    'chapter_sort_book' => 'Sort Book',
 
     // Pages
     'page' => 'Page',
@@ -355,4 +357,16 @@ return [
     'copy_consider_images' => 'Page image files will not be duplicated & the original images will retain their relation to the page they were originally uploaded to.',
     'copy_consider_attachments' => 'Page attachments will not be copied.',
     'copy_consider_access' => 'A change of location, owner or permissions may result in this content being accessible to those previously without access.',
+
+    // Conversions
+    'convert_to_shelf' => 'Convert to Shelf',
+    'convert_to_shelf_contents_desc' => 'You can convert this book to a new shelf with the same contents. Chapters contained within this book will be converted to new books. If this book contains any pages, that are not in a chapter, this book will be renamed and contain such pages, and this book will become part of the new shelf.',
+    'convert_to_shelf_permissions_desc' => 'Any permissions set on this book will be copied to the new shelf and to all new child books that don\'t have their own permissions enforced. Note that permissions on shelves do not auto-cascade to content within, as they do for books.',
+    'convert_book' => 'Convert Book',
+    'convert_book_confirm' => 'Are you sure you want to convert this book?',
+    'convert_undo_warning' => 'This cannot be as easily undone.',
+    'convert_to_book' => 'Convert to Book',
+    'convert_to_book_desc' => 'You can convert this chapter to a new book with the same contents. Any permissions set on this chapter will be copied to the new book but any inherited permissions, from the parent book, will not be copied which could lead to a change of access control.',
+    'convert_chapter' => 'Convert Chapter',
+    'convert_chapter_confirm' => 'Are you sure you want to convert this chapter?',
 ];

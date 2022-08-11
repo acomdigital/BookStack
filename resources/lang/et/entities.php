@@ -24,6 +24,7 @@ return [
     'meta_updated_name' => 'Muudetud :timeLength kasutaja :user poolt',
     'meta_owned_name' => 'Kuulub kasutajale :user',
     'entity_select' => 'Objekti valik',
+    'entity_select_lack_permission' => 'Sul pole õiguseid selle objekti valimiseks',
     'images' => 'Pildid',
     'my_recent_drafts' => 'Minu hiljutised mustandid',
     'my_recently_viewed' => 'Minu viimati vaadatud',
@@ -170,6 +171,7 @@ return [
     'chapters_permissions_active' => 'Peatüki õigused on aktiivsed',
     'chapters_permissions_success' => 'Peatüki õigused muudetud',
     'chapters_search_this' => 'Otsi sellest peatükist',
+    'chapter_sort_book' => 'Sorteeri raamat',
 
     // Pages
     'page' => 'Leht',
@@ -355,4 +357,16 @@ return [
     'copy_consider_images' => 'Lehel olevaid pildifaile ei dubleerita. Pildid säilitavad viite lehele, millele nad algselt lisati.',
     'copy_consider_attachments' => 'Lehe manuseid ei kopeerita.',
     'copy_consider_access' => 'Asukoha, omaniku või õiguste muudatused võivad teha sisu kättesaadavaks neile, kellel varem sellele ligipääs puudus.',
+
+    // Conversions
+    'convert_to_shelf' => 'Muuda riiuliks',
+    'convert_to_shelf_contents_desc' => 'Saad muuta selle raamatu uueks, sama sisuga riiuliks. Raamatu peatükid muudetakse uuteks raamatuteks. Kui raamat sisaldab lehti, mis ei kuulu ühegi peatüki alla, nimetatakse see raamat ümber ning see saab uue riiuli osana sisaldama neid lehti.',
+    'convert_to_shelf_permissions_desc' => 'Raamatule määratud õigused kopeeritakse uuele riiulile ja kõigile uutele raamatutele, millel ei ole endal määratud õiguseid. Pane tähele, et riiulitele määratud õigused ei rakendu automaatselt sisule, nagu raamatute puhul.',
+    'convert_book' => 'Muuda raamat',
+    'convert_book_confirm' => 'Kas oled kindel, et soovid selle raamatu muuta?',
+    'convert_undo_warning' => 'Seda ei saa lihtsasti tagasi võtta.',
+    'convert_to_book' => 'Muuda raamatuks',
+    'convert_to_book_desc' => 'Saad muuta selle peatüki uueks, sama sisuga raamatuks. Peatükile määratud õigused kopeeritakse uuele raamatule, aga olemasolevalt raamatult pärit õiguseid ei kopeerita, mis võib põhjustada muudatusi ligipääsudes.',
+    'convert_chapter' => 'Muud peatükk',
+    'convert_chapter_confirm' => 'Kas oled kindel, et soovid selle peatüki muuta?',
 ];

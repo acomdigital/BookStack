@@ -24,6 +24,7 @@ return [
     'meta_updated_name' => '由 :user 更新于 :timeLength',
     'meta_owned_name' => '拥有者 :user',
     'entity_select' => '选择项目',
+    'entity_select_lack_permission' => '您没有选择此项目所需的权限',
     'images' => '图片',
     'my_recent_drafts' => '我最近的草稿',
     'my_recently_viewed' => '我最近看过',
@@ -87,7 +88,7 @@ return [
     'shelves_save' => '保存书架',
     'shelves_books' => '书籍已在此书架里',
     'shelves_add_books' => '将书籍加入此书架',
-    'shelves_drag_books' => '拖动图书将其添加到此书架',
+    'shelves_drag_books' => '拖动下面的图书将其添加到此书架',
     'shelves_empty_contents' => '这个书架没有分配图书',
     'shelves_edit_and_assign' => '编辑书架以分配图书',
     'shelves_edit_named' => '编辑书架 :name',
@@ -170,6 +171,7 @@ return [
     'chapters_permissions_active' => '有效的章节权限',
     'chapters_permissions_success' => '章节权限已更新',
     'chapters_search_this' => '从本章节搜索',
+    'chapter_sort_book' => '排序图书',
 
     // Pages
     'page' => '页面',
@@ -329,7 +331,7 @@ return [
     'comments' => '评论',
     'comment_add' => '添加评论',
     'comment_placeholder' => '在这里评论',
-    'comment_count' => '{0} 无评论|[1,*] :count条评论',
+    'comment_count' => '{0} 无评论|{1} 1 条评论|[2,*] :count 条评论',
     'comment_save' => '保存评论',
     'comment_saving' => '正在保存评论...',
     'comment_deleting' => '正在删除评论...',
@@ -355,4 +357,16 @@ return [
     'copy_consider_images' => '页面中的图像文件不会被复制，原始图像将保留它们与最初上传到的页面的关系。',
     'copy_consider_attachments' => '页面中的附件不会被复制。',
     'copy_consider_access' => '改变位置、所有者或权限可能会导致此内容被以前无法访问的人访问。',
+
+    // Conversions
+    'convert_to_shelf' => '转换为书架',
+    'convert_to_shelf_contents_desc' => '你可以将这本书转换为具有相同内容的新书架。本书中的章节将被转换为图书。如果这本书包含有任何不在章节分类中的页面，那么将会有一本单独的图书包含这些页面，这本书也将成为新书架的一部分。',
+    'convert_to_shelf_permissions_desc' => '在这本书上设置的任何权限都将复制到所有未强制执行权限的新书架和新子图书上。请注意，书架上的权限不会像图书那样继承到内容物上。',
+    'convert_book' => '转换图书',
+    'convert_book_confirm' => '您确定要转换此图书吗？',
+    'convert_undo_warning' => '这可不能轻易撤消。',
+    'convert_to_book' => '转换为图书',
+    'convert_to_book_desc' => '您可以将此章节转换为具有相同内容的新图书。此章节中设置的任何权限都将复制到新图书上，但从父图书继承的任何权限都不会被复制，这可能会导致访问控制发生变化。',
+    'convert_chapter' => '转换章节',
+    'convert_chapter_confirm' => '您确定要转换此章节吗？',
 ];

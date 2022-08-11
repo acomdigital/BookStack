@@ -24,6 +24,7 @@ return [
     'meta_updated_name' => '수정함 :timeLength, :user',
     'meta_owned_name' => '소유함 :user',
     'entity_select' => '항목 선택',
+    'entity_select_lack_permission' => 'You don\'t have the required permissions to select this item',
     'images' => '이미지',
     'my_recent_drafts' => '내 최근의 초안 문서',
     'my_recently_viewed' => '내가 읽은 문서',
@@ -87,7 +88,7 @@ return [
     'shelves_save' => '저장',
     'shelves_books' => '이 책꽂이에 있는 책들',
     'shelves_add_books' => '이 책꽂이에 책 추가',
-    'shelves_drag_books' => '여기에 책을 드롭하세요.',
+    'shelves_drag_books' => 'Drag books below to add them to this shelf',
     'shelves_empty_contents' => '이 책꽂이에 책이 없습니다.',
     'shelves_edit_and_assign' => '책꽂이 바꾸기로 책을 추가하세요.',
     'shelves_edit_named' => ':name 바꾸기',
@@ -170,6 +171,7 @@ return [
     'chapters_permissions_active' => '문서 권한 허용함',
     'chapters_permissions_success' => '권한 저장함',
     'chapters_search_this' => '이 챕터에서 검색',
+    'chapter_sort_book' => 'Sort Book',
 
     // Pages
     'page' => '문서',
@@ -355,4 +357,16 @@ return [
     'copy_consider_images' => '이미지 파일은 복사되지 않습니다. 올라가 있던 이미지가 사라지지 않습니다.',
     'copy_consider_attachments' => '첨부 파일은 복사되지 않습니다.',
     'copy_consider_access' => '경로, 소유자, 권한이 바뀌면 이 문서를 본 적 없는 사용자가 볼 수도 있습니다.',
+
+    // Conversions
+    'convert_to_shelf' => 'Convert to Shelf',
+    'convert_to_shelf_contents_desc' => 'You can convert this book to a new shelf with the same contents. Chapters contained within this book will be converted to new books. If this book contains any pages, that are not in a chapter, this book will be renamed and contain such pages, and this book will become part of the new shelf.',
+    'convert_to_shelf_permissions_desc' => 'Any permissions set on this book will be copied to the new shelf and to all new child books that don\'t have their own permissions enforced. Note that permissions on shelves do not auto-cascade to content within, as they do for books.',
+    'convert_book' => 'Convert Book',
+    'convert_book_confirm' => 'Are you sure you want to convert this book?',
+    'convert_undo_warning' => 'This cannot be as easily undone.',
+    'convert_to_book' => 'Convert to Book',
+    'convert_to_book_desc' => 'You can convert this chapter to a new book with the same contents. Any permissions set on this chapter will be copied to the new book but any inherited permissions, from the parent book, will not be copied which could lead to a change of access control.',
+    'convert_chapter' => 'Convert Chapter',
+    'convert_chapter_confirm' => 'Are you sure you want to convert this chapter?',
 ];

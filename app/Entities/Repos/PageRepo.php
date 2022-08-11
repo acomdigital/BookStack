@@ -337,6 +337,7 @@ class PageRepo
         $this->savePageRevision($page, $summary);
 
         Activity::add(ActivityType::PAGE_RESTORE, $page);
+        Activity::add(ActivityType::REVISION_RESTORE, $revision);
 
         return $page;
     }
@@ -390,23 +391,6 @@ class PageRepo
         $parentClass = $entityType === 'book' ? Book::class : Chapter::class;
 
         return $parentClass::visible()->where('id', '=', $entityId)->first();
-    }
-
-    /**
-     * Change the page's parent to the given entity.
-     */
-    protected function changeParent(Page $page, Entity $parent)
-    {
-        $book = ($parent instanceof Chapter) ? $parent->book : $parent;
-        $page->chapter_id = ($parent instanceof Chapter) ? $parent->id : 0;
-        $page->save();
-
-        if ($page->book->id !== $book->id) {
-            $page->changeBook($book->id);
-        }
-
-        $page->load('book');
-        $book->rebuildPermissions();
     }
 
     /**
