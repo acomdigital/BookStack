@@ -32,8 +32,6 @@ return [
     // Overrides, in JSON format, to the configuration passed to underlying onelogin library.
     'onelogin_overrides' => env('SAML2_ONELOGIN_OVERRIDES', null),
 
-    'auto_login' => env('SAML2_AUTOLOGIN', false),
-
     'onelogin' => [
         // If 'strict' is True, then the PHP Toolkit will reject unsigned
         // or unencrypted messages if it expects them signed or encrypted

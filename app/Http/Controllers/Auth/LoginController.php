@@ -72,11 +72,6 @@ class LoginController extends Controller
         $socialDrivers = $this->socialAuthService->getActiveDrivers();
         $authMethod = config('auth.method');
         $preventInitiation = $request->get('prevent_auto_init') === 'true';
-        $autoLogin = config('saml2.auto_login', false);
-
-        if ($authMethod == 'saml2' && $autoLogin) {
-            return redirect(url('/saml2/login'));
-        }
 
         if ($request->has('email')) {
             session()->flashInput([
