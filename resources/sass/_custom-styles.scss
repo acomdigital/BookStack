@@ -444,7 +444,6 @@ header .links a {
 }
 
 .header-search {
-  display: inline-block;
   @include larger-than($l) {
     margin: 0 0 0 150px;
   }
@@ -453,6 +452,8 @@ header .links a {
 header .search-box {
   button {
     @include lightDark(color, $text-dark, $text-light);
+    top: 50%;
+    opacity: 1;
   }
 
   input {
