@@ -432,7 +432,7 @@ header {
   border-bottom: none;
   box-shadow: 0 0 24px rgb(0 0 0 / 25%);
   min-height: 85px;
-  padding-top: 15px;
+  padding-top: 7px;
   @include lightDark(color, $text-dark, $text-light);
   @include whenDark {
     filter: none;
@@ -445,8 +445,11 @@ header .links a {
 
 .header-search {
   @include larger-than($l) {
-    margin: 0 0 0 150px;
+    margin: 0 0 0 277px;
   }
+}
+header .header-links {
+  justify-content: flex-end;
 }
 
 header .search-box {
