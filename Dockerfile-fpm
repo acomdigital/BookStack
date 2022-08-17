@@ -39,29 +39,38 @@ RUN set -x; \
     && docker-php-ext-install -j$(nproc) gd
 RUN apt-get remove -y git && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ARG APP_WORKDIR=/var/www/fpm/bookstack
+ARG APP_USER=www-data
+ARG APP_GROUP=www-data
+
 COPY dev/ee/fpm/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY --chmod=775 dev/ee/fpm/docker-entrypoint.sh /bin/docker-entrypoint.sh
-COPY . /var/www/bookstack/
-COPY --from=node_build /www/public/dist /var/www/bookstack/public/dist/
+COPY . $APP_WORKDIR
+COPY --from=node_build /www/public/dist $APP_WORKDIR/public/dist/
 
 ARG COMPOSER_VERSION=2.1.12
 RUN set -x; \
-    cd /var/www/bookstack \
+    cd $APP_WORKDIR \
     && curl -sS https://getcomposer.org/installer | php -- --version=$COMPOSER_VERSION \
-    && /var/www/bookstack/composer.phar install -v -d /var/www/bookstack/ \
-    && rm -rf /var/www/bookstack/composer.phar /root/.composer
+    && $APP_WORKDIR/composer.phar install -v -d $APP_WORKDIR \
+    && rm -rf $APP_WORKDIR/composer.phar /root/.composer
 
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
+WORKDIR $APP_WORKDIR
 
-RUN chown -R www:www /var/www/bookstack
+RUN usermod -u 1000 $APP_USER
+RUN groupmod -g 1000 $APP_GROUP
 
-WORKDIR /var/www/bookstack
+# Set correct permissions for files
+RUN find $APP_WORKDIR -type f -exec chmod 644 {} \;
 
-# www-data
-USER www
+# Set correct permissions for directories
+RUN find $APP_WORKDIR -type d -exec chmod 755 {} \;
 
-VOLUME ["/var/www/bookstack/public", "/var/www/bookstack/storage/uploads"]
+# Set webserver group for storage + cache folders
+RUN chgrp -R $APP_GROUP $APP_WORKDIR/storage $APP_WORKDIR/bootstrap/cache
+
+# Set correct permissions for storage + cache folders
+RUN chmod -R ug+rwx $APP_WORKDIR/storage $APP_WORKDIR/bootstrap/cache
 
 EXPOSE 9000
 
