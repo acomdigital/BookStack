@@ -92,6 +92,10 @@ Hinweis: Benutzer können ihre E-Mail Adresse nach erfolgreicher Registrierung �
     'maint_send_test_email_mail_text' => 'Glückwunsch! Da Sie diese E-Mail Benachrichtigung erhalten haben, scheinen Ihre E-Mail-Einstellungen korrekt konfiguriert zu sein.',
     'maint_recycle_bin_desc' => 'Gelöschte Regale, Bücher, Kapitel & Seiten werden in den Papierkorb verschoben, so dass sie wiederhergestellt oder dauerhaft gelöscht werden können. Ältere Gegenstände im Papierkorb können, in Abhängigkeit von der Systemkonfiguration, nach einer Weile automatisch entfernt werden.',
     'maint_recycle_bin_open' => 'Papierkorb öffnen',
+    'maint_regen_references' => 'Referenzen neu generieren',
+    'maint_regen_references_desc' => 'Diese Aktion wird den Referenzindex innerhalb der Datenbank neu erstellen. Dies wird normalerweise automatisch ausgeführt, aber diese Aktion kann nützlich sein, um alte Inhalte oder Inhalte zu indizieren, die mittels inoffizieller Methoden hinzugefügt wurden.',
+    'maint_regen_references_success' => 'Referenz-Index wurde neu generiert!',
+    'maint_timeout_command_note' => 'Hinweis: Die Ausführung dieser Aktion kann einige Zeit in Anspruch nehmen, was in einigen Webumgebungen zu Timeout-Problemen führen kann. Alternativ kann diese Aktion auch mit einem Terminalbefehl ausgeführt werden.',
 
     // Recycle Bin
     'recycle_bin' => 'Papierkorb',
@@ -160,6 +164,7 @@ Hinweis: Benutzer können ihre E-Mail Adresse nach erfolgreicher Registrierung �
     'roles_system_warning' => 'Beachten Sie, dass der Zugriff auf eine der oben genannten drei Berechtigungen einem Benutzer erlauben kann, seine eigenen Berechtigungen oder die Rechte anderer im System zu ändern. Weisen Sie nur Rollen, mit diesen Berechtigungen, vertrauenswürdigen Benutzern zu.',
     'role_asset_desc' => 'Diese Berechtigungen gelten für den Standard-Zugriff innerhalb des Systems. Berechtigungen für Bücher, Kapitel und Seiten überschreiben diese Berechtigungenen.',
     'role_asset_admins' => 'Administratoren erhalten automatisch Zugriff auf alle Inhalte, aber diese Optionen können Oberflächenoptionen ein- oder ausblenden.',
+    'role_asset_image_view_note' => 'Das bezieht sich auf die Sichtbarkeit innerhalb des Bildmanagers. Der tatsächliche Zugriff auf hochgeladene Bilddateien hängt von der Speicheroption des Systems für Bilder ab.',
     'role_all' => 'Alle',
     'role_own' => 'Eigene',
     'role_controlled_by_asset' => 'Berechtigungen werden vom Uploadziel bestimmt',
@@ -298,6 +303,7 @@ Hinweis: Benutzer können ihre E-Mail Adresse nach erfolgreicher Registrierung �
         'pl' => 'Polnisch',
         'pt' => 'Portugiesisch',
         'pt_BR' => 'Portugiesisch (Brasilien)',
+        'ro' => 'Română',
         'ru' => 'Russisch',
         'sk' => 'Slowenisch',
         'sl' => 'Slowenisch',

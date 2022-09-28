@@ -27,9 +27,9 @@ class PageRevisionController extends Controller
     {
         $page = $this->pageRepo->getBySlug($bookSlug, $pageSlug);
         $revisions = $page->revisions()->select([
-                'id', 'page_id', 'name', 'created_at', 'created_by', 'updated_at',
-                'type', 'revision_number', 'summary',
-            ])
+            'id', 'page_id', 'name', 'created_at', 'created_by', 'updated_at',
+            'type', 'revision_number', 'summary',
+        ])
             ->selectRaw("IF(markdown = '', false, true) as is_markdown")
             ->with(['page.book', 'createdBy'])
             ->get();
@@ -38,7 +38,7 @@ class PageRevisionController extends Controller
 
         return view('pages.revisions', [
             'revisions' => $revisions,
-            'page'    => $page,
+            'page'      => $page,
         ]);
     }
 
@@ -91,7 +91,7 @@ class PageRevisionController extends Controller
         // TODO - Refactor PageContent so we don't need to juggle this
         $page->html = $revision->html;
         $page->html = (new PageContent($page))->render();
-        $this->setPageTitle(trans('entities.pages_revision_named', ['pageName'=>$page->getShortName()]));
+        $this->setPageTitle(trans('entities.pages_revision_named', ['pageName' => $page->getShortName()]));
 
         return view('pages.revision', [
             'page'     => $page,
