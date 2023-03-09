@@ -15,8 +15,10 @@ function isDrawing(node) {
 function showDrawingManager(mceEditor, selectedNode = null) {
     pageEditor = mceEditor;
     currentNode = selectedNode;
-    // Show image manager
-    window.ImageManager.show(function (image) {
+
+    /** @type {ImageManager} **/
+    const imageManager = window.$components.first('image-manager');
+    imageManager.show(function (image) {
         if (selectedNode) {
             const imgElem = selectedNode.querySelector('img');
             pageEditor.undoManager.transact(function () {
@@ -87,7 +89,7 @@ function drawingInit() {
         return Promise.resolve('');
     }
 
-    let drawingId = currentNode.getAttribute('drawio-diagram');
+    const drawingId = currentNode.getAttribute('drawio-diagram');
     return DrawIO.load(drawingId);
 }
 

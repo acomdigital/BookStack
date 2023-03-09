@@ -52,7 +52,6 @@ class OidcService
     {
         $settings = $this->getProviderSettings();
         $provider = $this->getProvider($settings);
-
         return [
             'url'   => $provider->getAuthorizationUrl(),
             'state' => $provider->getState(),
@@ -199,7 +198,8 @@ class OidcService
      */
     protected function getUserDetails(OidcIdToken $token): array
     {
-        $id = $token->getClaim('sub');
+        $idClaim = $this->config()['external_id_claim'];
+        $id = $token->getClaim($idClaim);
 
         return [
             'external_id' => $id,

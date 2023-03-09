@@ -73,7 +73,9 @@ function file_picker_callback(callback, value, meta) {
 
     // field_name, url, type, win
     if (meta.filetype === 'file') {
-        window.EntitySelectorPopup.show(entity => {
+        /** @type {EntitySelectorPopup} **/
+        const selector = window.$components.first('entity-selector-popup');
+        selector.show(entity => {
             callback(entity.link, {
                 text: entity.name,
                 title: entity.name,
@@ -83,7 +85,9 @@ function file_picker_callback(callback, value, meta) {
 
     if (meta.filetype === 'image') {
         // Show image manager
-        window.ImageManager.show(function (image) {
+        /** @type {ImageManager} **/
+        const imageManager = window.$components.first('image-manager');
+        imageManager.show(function (image) {
             callback(image.url, {alt: image.name});
         }, 'gallery');
     }
@@ -181,11 +185,10 @@ function getSetupCallback(options) {
         });
 
         function editorChange() {
-            const content = editor.getContent();
             if (options.darkMode) {
                 editor.contentDocument.documentElement.classList.add('dark-mode');
             }
-            window.$events.emit('editor-html-change', content);
+            window.$events.emit('editor-html-change', '');
         }
 
         // Custom handler hook

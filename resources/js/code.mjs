@@ -4,6 +4,7 @@ import Clipboard from "clipboard/dist/clipboard.min";
 // Modes
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/clike/clike';
+import 'codemirror/mode/dart/dart';
 import 'codemirror/mode/diff/diff';
 import 'codemirror/mode/fortran/fortran';
 import 'codemirror/mode/go/go';
@@ -24,10 +25,14 @@ import 'codemirror/mode/properties/properties';
 import 'codemirror/mode/python/python';
 import 'codemirror/mode/ruby/ruby';
 import 'codemirror/mode/rust/rust';
+import 'codemirror/mode/scheme/scheme';
 import 'codemirror/mode/shell/shell';
+import 'codemirror/mode/smarty/smarty';
 import 'codemirror/mode/sql/sql';
 import 'codemirror/mode/stex/stex';
+import 'codemirror/mode/swift/swift';
 import 'codemirror/mode/toml/toml';
+import 'codemirror/mode/twig/twig';
 import 'codemirror/mode/vb/vb';
 import 'codemirror/mode/vbscript/vbscript';
 import 'codemirror/mode/xml/xml';
@@ -49,6 +54,7 @@ const modeMap = {
     'c++': 'text/x-c++src',
     'c#': 'text/x-csharp',
     csharp: 'text/x-csharp',
+    dart: 'application/dart',
     diff: 'diff',
     for: 'fortran',
     fortran: 'fortran',
@@ -71,6 +77,8 @@ const modeMap = {
     mdown: 'markdown',
     markdown: 'markdown',
     ml: 'mllike',
+    mssql: 'text/x-mssql',
+    mysql: 'text/x-mysql',
     nginx: 'nginx',
     octave: 'text/x-octave',
     perl: 'perl',
@@ -83,19 +91,27 @@ const modeMap = {
     php: (content) => {
         return content.includes('<?php') ? 'php' : 'text/x-php';
     },
+    pgsql: 'text/x-pgsql',
+    'pl/sql': 'text/x-plsql',
+    postgresql: 'text/x-pgsql',
     py: 'python',
     python: 'python',
     ruby: 'ruby',
     rust: 'rust',
     rb: 'ruby',
     rs: 'rust',
+    scheme: 'scheme',
     shell: 'shell',
     sh: 'shell',
+    smarty: 'smarty',
+    sql: 'text/x-sql',
+    sqlite: 'text/x-sqlite',
     stext: 'text/x-stex',
+    swift: 'text/x-swift',
     toml: 'toml',
     ts: 'text/typescript',
+    twig: 'twig',
     typescript: 'text/typescript',
-    sql: 'text/x-sql',
     vbs: 'vbscript',
     vbscript: 'vbscript',
     'vb.net': 'text/x-vb',
