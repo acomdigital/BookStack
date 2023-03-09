@@ -453,7 +453,7 @@ header .header-links {
 }
 
 header .search-box {
-  button {
+  button, #header-search-box-button {
     @include lightDark(color, $text-dark, $text-light);
     top: 50%;
     opacity: 1;
