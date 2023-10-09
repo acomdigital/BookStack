@@ -4,7 +4,7 @@
         <div>
             <a href="{{ url('/') }}" data-shortcut="home_view" class="logo">
                 @if(setting('app-logo', '') !== 'none')
-                    <img class="logo-image" src="{{ setting('app-logo', '') === '' ? url('/logo.png') : url(setting('app-logo', '')) }}" alt="Logo">
+                    <img class="logo-image" src="{{ setting('app-logo', '') === '' ? url('/ee-logo-2x.png') : url(setting('app-logo', '')) }}" alt="Logo">
                 @endif
                 @if (setting('app-name-header'))
                     <span class="logo-text">{{ setting('app-name') }}</span>
@@ -17,7 +17,7 @@
                     class="mobile-menu-toggle hide-over-l">@icon('more')</button>
         </div>
 
-        <div class="flex-container-column items-center justify-center hide-under-l">
+        <div class="flex-container-column items-center justify-center hide-under-l header-search">
             @if (hasAppAccess())
             <form component="global-search" action="{{ url('/search') }}" method="GET" class="search-box" role="search" tabindex="0">
                 <button id="header-search-box-button"

@@ -309,11 +309,18 @@ Route::post('/register/confirm/accept', [AccessControllers\ConfirmEmailControlle
 Route::post('/register', [AccessControllers\RegisterController::class, 'postRegister']);
 
 // SAML routes
-Route::post('/saml2/login', [AccessControllers\Saml2Controller::class, 'login']);
-Route::post('/saml2/logout', [AccessControllers\Saml2Controller::class, 'logout']);
-Route::get('/saml2/metadata', [AccessControllers\Saml2Controller::class, 'metadata']);
-Route::get('/saml2/sls', [AccessControllers\Saml2Controller::class, 'sls']);
-Route::post('/saml2/acs', [AccessControllers\Saml2Controller::class, 'startAcs'])->withoutMiddleware([
+// Route::post('/saml2/login', [AccessControllers\Saml2Controller::class, 'login']);
+// Route::post('/saml2/logout', [AccessControllers\Saml2Controller::class, 'logout']);
+// Route::get('/saml2/metadata', [AccessControllers\Saml2Controller::class, 'metadata']);
+// Route::get('/saml2/sls', [AccessControllers\Saml2Controller::class, 'sls']);
+// Route::post('/saml2/acs', [AccessControllers\Saml2Controller::class, 'startAcs'])->withoutMiddleware([
+
+Route::post('/saml2/login', [Auth\Saml2Controller::class, 'login']);
+Route::get('/saml2/login', [Auth\Saml2Controller::class, 'login']);
+Route::post('/saml2/logout', [Auth\Saml2Controller::class, 'logout']);
+Route::get('/saml2/metadata', [Auth\Saml2Controller::class, 'metadata']);
+Route::get('/saml2/sls', [Auth\Saml2Controller::class, 'sls']);
+Route::post('/saml2/acs', [Auth\Saml2Controller::class, 'startAcs'])->withoutMiddleware([
     StartSession::class,
     ShareErrorsFromSession::class,
     VerifyCsrfToken::class,

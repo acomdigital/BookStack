@@ -35,3 +35,6 @@ window.trans_plural = translator.parsePlural.bind(translator);
 components.register(componentMap);
 window.$components = components;
 components.init();
+
+// Load header
+import "./addons/header"
