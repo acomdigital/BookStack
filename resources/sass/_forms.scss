@@ -11,12 +11,13 @@
   height: 40px;
   width: 250px;
   max-width: 100%;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
   &.neg, &.invalid {
-    border: 1px solid var(--color-negative);
+    border: 1px solid $negative;
   }
   &.pos, &.valid {
-    border: 1px solid var(--color-positive);
+    border: 1px solid $positive;
   }
   &.disabled, &[disabled] {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAMUlEQVQIW2NkwAGuXbv2nxGbHEhCS0uLEUMSJgHShCKJLIEiiS4Bl8QmAZbEJQGSBAC62BuJ+tt7zgAAAABJRU5ErkJggg==);
@@ -75,19 +76,11 @@
   @include lightDark(border-color, #ddd, #000);
   position: relative;
   flex: 1;
-  min-width: 0;
 }
 .markdown-editor-wrap + .markdown-editor-wrap {
   flex-basis: 50%;
   flex-shrink: 0;
   flex-grow: 0;
-}
-
-.markdown-editor-wrap .cm-editor {
-  flex: 1;
-  max-width: 100%;
-  border: 0;
-  margin: 0;
 }
 
 .markdown-panel-divider {
@@ -105,7 +98,6 @@
     max-width: 100%;
     flex-grow: 1;
     flex-basis: auto !important;
-    min-height: 0;
   }
   .editor-toolbar-label {
     float: none !important;
@@ -120,6 +112,7 @@
   #markdown-editor .markdown-editor-wrap:not(.active) {
     flex-grow: 0;
     flex: none;
+    min-height: 0;
   }
 }
 
@@ -263,11 +256,22 @@ input[type=color] {
   .custom-checkbox {
     width: 16px;
     height: 16px;
-    border-radius: 2px;
+    border-radius: 4px;
     display: inline-block;
-    border: 2px solid currentColor;
     overflow: hidden;
     fill: currentColor;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    border: 1px solid rgba(0,0,21,.25);
+    &:active{
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgba(50,31,219,.25);
+    }
+    &:focus{
+      outline: 0;
+    }
+
     .svg-icon {
       width: 100%;
       height: 100%;
@@ -278,13 +282,16 @@ input[type=color] {
       transition: transform ease-in-out 120ms;
       transform: scale(0);
       transform-origin: center center;
+      display: none;
     }
   }
   input[type=checkbox] {
     display: none;
   }
-  input[type=checkbox]:checked + .custom-checkbox .svg-icon {
-    transform: scale(1);
+  input[type=checkbox]:checked + .custom-checkbox {
+    background-color: #484c93;
+    border-color: #484c93;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='none' stroke='rgba(255, 255, 255, 0.87)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3 6-6'/%3E%3C/svg%3E");
   }
   .custom-checkbox:hover {
     background-color: rgba(0, 0, 0, 0.05);
@@ -464,58 +471,6 @@ div[editor-type="markdown"] .title-input.page-title input[type="text"] {
   .search-box-cancel {
     left: auto;
     right: 0;
-  }
-}
-
-.contained-search-box {
-  display: flex;
-  height: 38px;
-  z-index: -1;
-  &.floating {
-    box-shadow: $bs-med;
-    border-radius: 4px;
-    overflow: hidden;
-    @include whenDark {
-      border: 1px solid #000;
-    }
-  }
-  input, button {
-    height: 100%;
-    border-radius: 0;
-    border: 1px solid #ddd;
-    @include lightDark(border-color, #ddd, #000);
-    margin-inline-start: -1px;
-    &:last-child {
-      border-inline-end: 0;
-    }
-  }
-  input {
-    border: 0;
-    flex: 5;
-    padding: $-xs $-s;
-    &:focus, &:active {
-      outline: 1px dotted var(--color-primary);
-      outline-offset: -2px;
-      border: 0;
-    }
-  }
-  button {
-    border: 0;
-    width: 48px;
-    border-inline-start: 1px solid #DDD;
-    background-color: #FFF;
-    @include lightDark(background-color, #FFF, #333);
-    @include lightDark(color, #444, #AAA);
-  }
-  button:focus {
-    outline: 1px dotted var(--color-primary);
-    outline-offset: -2px;
-  }
-  svg {
-    margin: 0;
-  }
-  @include smaller-than($s) {
-    width: 180px;
   }
 }
 

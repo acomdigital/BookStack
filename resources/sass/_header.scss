@@ -100,6 +100,7 @@ header .search-box {
     height: auto;
     padding: $-xs*1.5;
     padding-inline-start: 40px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     &:focus {
       outline: none;
       border: 1px solid rgba(255, 255, 255, 0.4);

@@ -3,8 +3,11 @@
 @import "mixins";
 @import "html";
 @import "text";
+@import "layout";
+@import "blocks";
 @import "tables";
-@import "content";
+@import "lists";
+@import "pages";
 
 html, body {
   background-color: #FFF;
@@ -30,7 +33,7 @@ table {
 pre {
   padding-left: 12px;
 }
-pre:before {
+pre:after {
   display: none;
 }
 pre code {

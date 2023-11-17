@@ -253,15 +253,6 @@ body.flexbox {
   position: relative;
 }
 
-.fixed {
-  position: fixed;
-  z-index: 20;
-  &.top-right {
-    top: 0;
-    right: 0;
-  }
-}
-
 .hidden {
   display: none !important;
 }
@@ -296,19 +287,6 @@ body.flexbox {
       display: none !important;
     }
   }
-}
-
-[hidden] {
-  display: none !important;
-}
-
-.screen-reader-only {
-  position: absolute;
-  inset-inline-start: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
 }
 
 /**
@@ -353,7 +331,7 @@ body.flexbox {
   margin-inline-end: $-xl;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: "a b c";
-  grid-column-gap: $-xl;
+  grid-column-gap: $-xxl;
   .tri-layout-right {
     grid-area: c;
     min-width: 0;
@@ -376,14 +354,6 @@ body.flexbox {
     grid-template-columns: 1fr 3fr;
     grid-template-rows: min-content min-content 1fr;
     padding-inline-end: $-l;
-  }
-}
-@include between($xxl, $xxxl) {
-  .tri-layout-container {
-    grid-template-columns: 1fr calc(940px + (2 * $-m)) 1fr;
-    grid-column-gap: $-s;
-    margin-inline-start: $-m;
-    margin-inline-end: $-m;
   }
 }
 @include between($l, $xxl) {

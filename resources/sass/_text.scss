@@ -3,10 +3,10 @@
  */
 
 body, button, input, select, label, textarea {
-  font-family: var(--font-body);
+  font-family: $text;
 }
-pre, #markdown-editor-input, .text-mono, .code-base {
-  font-family: var(--font-code);
+.Codemirror, pre, #markdown-editor-input, .text-mono, .code-base {
+  font-family: $mono;
 }
 
 /*
@@ -42,7 +42,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   position: relative;
   display: block;
-  font-family: var(--font-heading, var(--font-body));
   @include lightDark(color, #222, #BBB);
   .subheader {
     font-size: 0.5em;
@@ -179,19 +178,18 @@ sub, .subscript {
 pre {
   font-size: 12px;
   border: 1px solid #DDD;
-  @include lightDark(background-color, #FFF, #2B2B2B);
+  @include lightDark(background-color, #f5f5f5, #2B2B2B);
   @include lightDark(border-color, #DDD, #111);
-  border-radius: 4px;
-  padding-left: 26px;
+  padding-left: 31px;
   position: relative;
   padding-top: 3px;
   padding-bottom: 3px;
-  &:before {
+  &:after {
     content: '';
     display: block;
     position: absolute;
     top: 0;
-    width: 22.4px;
+    width: 29px;
     left: 0;
     height: 100%;
     @include lightDark(background-color, #f5f5f5, #313335);
@@ -203,7 +201,7 @@ pre {
   pre {
     padding-left: 12px;
   }
-  pre:before {
+  pre:after {
     display: none;
   }
 }
@@ -211,8 +209,7 @@ pre {
 blockquote {
   display: block;
   position: relative;
-  border-left: 4px solid transparent;
-  border-left-color: var(--color-primary);
+  border-left: 4px solid var(--color-primary);
   @include lightDark(background-color, #f8f8f8, #333);
   padding: $-s $-m $-s $-xl;
   overflow: auto;
@@ -228,7 +225,7 @@ blockquote {
 }
 
 .text-mono {
-  font-family: var(--font-code);
+  font-family: $mono;
 }
 
 .text-uppercase {
@@ -365,7 +362,6 @@ li.checkbox-item, li.task-list-item {
 }
 
 .break-text {
-  white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
