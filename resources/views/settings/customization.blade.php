@@ -45,7 +45,7 @@
                     @include('form.image-picker', [
                              'removeName' => 'setting-app-logo',
                              'removeValue' => 'none',
-                             'defaultImage' => url('/logo.png'),
+                             'defaultImage' => url('/ee-logo-2x.png'),
                              'currentImage' => setting('app-logo'),
                              'name' => 'app_logo',
                              'imageClass' => 'logo-image',
