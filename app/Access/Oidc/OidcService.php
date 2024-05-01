@@ -9,13 +9,13 @@ use BookStack\Exceptions\JsonDebugException;
 use BookStack\Exceptions\StoppedAuthenticationException;
 use BookStack\Exceptions\UserRegistrationException;
 use BookStack\Facades\Theme;
+use BookStack\Http\HttpRequestService;
 use BookStack\Theming\ThemeEvents;
 use BookStack\Users\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use League\OAuth2\Client\OptionProvider\HttpBasicAuthOptionProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
-use Psr\Http\Client\ClientInterface as HttpClient;
 
 /**
  * Class OpenIdConnectService
@@ -26,13 +26,15 @@ class OidcService
     public function __construct(
         protected RegistrationService $registrationService,
         protected LoginService $loginService,
-        protected HttpClient $httpClient,
+        protected HttpRequestService $http,
         protected GroupSyncService $groupService
     ) {
     }
 
     /**
      * Initiate an authorization flow.
+     * Provides back an authorize redirect URL, in addition to other
+     * details which may be required for the auth flow.
      *
      * @throws OidcException
      *
@@ -42,8 +44,12 @@ class OidcService
     {
         $settings = $this->getProviderSettings();
         $provider = $this->getProvider($settings);
+
+        $url = $provider->getAuthorizationUrl();
+        session()->put('oidc_pkce_code', $provider->getPkceCode() ?? '');
+
         return [
-            'url'   => $provider->getAuthorizationUrl(),
+            'url'   => $url,
             'state' => $provider->getState(),
         ];
     }
@@ -62,6 +68,10 @@ class OidcService
     {
         $settings = $this->getProviderSettings();
         $provider = $this->getProvider($settings);
+
+        // Set PKCE code flashed at login
+        $pkceCode = session()->pull('oidc_pkce_code', '');
+        $provider->setPkceCode($pkceCode);
 
         // Try to exchange authorization code for access token
         $accessToken = $provider->getAccessToken('authorization_code', [
@@ -84,6 +94,7 @@ class OidcService
             'redirectUri'           => url('/oidc/callback'),
             'authorizationEndpoint' => $config['authorization_endpoint'],
             'tokenEndpoint'         => $config['token_endpoint'],
+            'endSessionEndpoint'    => is_string($config['end_session_endpoint']) ? $config['end_session_endpoint'] : null,
         ]);
 
         // Use keys if configured
@@ -94,10 +105,18 @@ class OidcService
         // Run discovery
         if ($config['discover'] ?? false) {
             try {
-                $settings->discoverFromIssuer($this->httpClient, Cache::store(null), 15);
+                $settings->discoverFromIssuer($this->http->buildClient(5), Cache::store(null), 15);
             } catch (OidcIssuerDiscoveryException $exception) {
                 throw new OidcException('OIDC Discovery Error: ' . $exception->getMessage());
             }
+        }
+
+        // Prevent use of RP-initiated logout if specifically disabled
+        // Or force use of a URL if specifically set.
+        if ($config['end_session_endpoint'] === false) {
+            $settings->endSessionEndpoint = null;
+        } else if (is_string($config['end_session_endpoint'])) {
+            $settings->endSessionEndpoint = $config['end_session_endpoint'];
         }
 
         $settings->validate();
@@ -111,7 +130,7 @@ class OidcService
     protected function getProvider(OidcProviderSettings $settings): OidcOAuthProvider
     {
         $provider = new OidcOAuthProvider($settings->arrayForProvider(), [
-            'httpClient'     => $this->httpClient,
+            'httpClient'     => $this->http->buildClient(5),
             'optionProvider' => new HttpBasicAuthOptionProvider(),
         ]);
 
@@ -142,10 +161,11 @@ class OidcService
      */
     protected function getUserDisplayName(OidcIdToken $token, string $defaultValue): string
     {
-        $displayNameAttr = $this->config()['display_name_claims'];
+        $displayNameAttrString = $this->config()['display_name_claims'] ?? '';
+        $displayNameAttrs = explode('|', $displayNameAttrString);
 
         $displayName = [];
-        foreach ($displayNameAttr as $dnAttr) {
+        foreach ($displayNameAttrs as $dnAttr) {
             $dnComponent = $token->getClaim($dnAttr) ?? '';
             if ($dnComponent !== '') {
                 $displayName[] = $dnComponent;
@@ -216,6 +236,8 @@ class OidcService
             $settings->keys,
         );
 
+        session()->put("oidc_id_token", $idTokenText);
+
         $returnClaims = Theme::dispatch(ThemeEvents::OIDC_ID_TOKEN_PRE_VALIDATE, $idToken->getAllClaims(), [
             'access_token' => $accessToken->getToken(),
             'expires_in' => $accessToken->getExpires(),
@@ -282,5 +304,31 @@ class OidcService
     protected function shouldSyncGroups(): bool
     {
         return $this->config()['user_to_groups'] !== false;
+    }
+
+    /**
+     * Start the RP-initiated logout flow if active, otherwise start a standard logout flow.
+     * Returns a post-app-logout redirect URL.
+     * Reference: https://openid.net/specs/openid-connect-rpinitiated-1_0.html
+     * @throws OidcException
+     */
+    public function logout(): string
+    {
+        $oidcToken = session()->pull("oidc_id_token");
+        $defaultLogoutUrl = url($this->loginService->logout());
+        $oidcSettings = $this->getProviderSettings();
+
+        if (!$oidcSettings->endSessionEndpoint) {
+            return $defaultLogoutUrl;
+        }
+
+        $endpointParams = [
+            'id_token_hint' => $oidcToken,
+            'post_logout_redirect_uri' => $defaultLogoutUrl,
+        ];
+
+        $joiner = str_contains($oidcSettings->endSessionEndpoint, '?') ? '&' : '?';
+
+        return $oidcSettings->endSessionEndpoint . $joiner . http_build_query($endpointParams);
     }
 }

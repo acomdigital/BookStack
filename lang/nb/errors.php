@@ -10,6 +10,7 @@ return [
 
     // Auth
     'error_user_exists_different_creds' => 'En konto med :email finnes allerede, men har andre detaljer.',
+    'auth_pre_register_theme_prevention' => 'Brukerkonto kunne ikke bli registrert for de angitte opplysningene',
     'email_already_confirmed' => 'E-posten er allerede bekreftet, du kan forsøke å logge inn.',
     'email_confirmation_invalid' => 'Denne bekreftelseskoden er allerede benyttet eller utgått. Prøv å registrere på nytt.',
     'email_confirmation_expired' => 'Bekreftelseskoden er allerede utgått, en ny e-post er sendt.',
@@ -19,12 +20,10 @@ return [
     'ldap_extension_not_installed' => 'LDAP PHP modulen er ikke installert.',
     'ldap_cannot_connect' => 'Klarer ikke koble til LDAP på denne adressen',
     'saml_already_logged_in' => 'Allerede logget inn',
-    'saml_user_not_registered' => 'Kontoen med navn :name er ikke registert, registrering er også deaktivert.',
     'saml_no_email_address' => 'Denne kontoinformasjonen finnes ikke i det eksterne autentiseringssystemet.',
     'saml_invalid_response_id' => 'Forespørselen fra det eksterne autentiseringssystemet gjenkjennes ikke av en prosess som startes av dette programmet. Å navigere tilbake etter pålogging kan forårsake dette problemet.',
     'saml_fail_authed' => 'Innlogging gjennom :system feilet. Fikk ikke kontakt med autentiseringstjeneren.',
     'oidc_already_logged_in' => 'Allerede logget inn',
-    'oidc_user_not_registered' => 'Brukeren :name er ikke registrert og automatisk registrering er deaktivert',
     'oidc_no_email_address' => 'Finner ikke en e-postadresse, for denne brukeren, i dataene som leveres av det eksterne autentiseringssystemet',
     'oidc_fail_authed' => 'Innlogging ved hjelp av :system feilet, systemet ga ikke vellykket godkjenning',
     'social_no_action_defined' => 'Ingen handlinger er definert',
@@ -44,12 +43,16 @@ return [
     'cannot_get_image_from_url' => 'Kan ikke hente bilde fra :url',
     'cannot_create_thumbs' => 'Kan ikke opprette miniatyrbilder. GD PHP er ikke installert.',
     'server_upload_limit' => 'Vedlegget er for stort, forsøk med et mindre vedlegg.',
+    'server_post_limit' => 'Serveren kan ikke motta det denne mengde data. Prøv igjen med mindre data eller en mindre fil.',
     'uploaded'  => 'Tjenesten aksepterer ikke vedlegg som er så stor.',
 
     // Drawing & Images
     'image_upload_error' => 'Bildet kunne ikke lastes opp, forsøk igjen.',
     'image_upload_type_error' => 'Bildeformatet støttes ikke, forsøk med et annet format.',
     'image_upload_replace_type' => 'Bildeerstatning må være av samme type',
+    'image_upload_memory_limit' => 'Kunne ikke håndtere bildeopplasting og/eller lage miniatyrbilder på grunn av systemressursgrensen.',
+    'image_thumbnail_memory_limit' => 'Kunne ikke opprette variasjoner i bildestørrelse på grunn av systemressursgrensen.',
+    'image_gallery_thumbnail_memory_limit' => 'Kunne ikke opprette miniatyrbilder på grunn av systemressursgrensene.',
     'drawing_data_not_found' => 'Tegningsdata kunne ikke lastes. Det er mulig at tegningsfilen ikke finnes lenger, eller du har ikke rettigheter til å få tilgang til den.',
 
     // Attachments

@@ -3,6 +3,7 @@
 namespace BookStack\Activity\Notifications\Messages;
 
 use BookStack\Activity\Models\Comment;
+use BookStack\Activity\Notifications\MessageParts\EntityLinkMessageLine;
 use BookStack\Activity\Notifications\MessageParts\ListMessageLine;
 use BookStack\Entities\Models\Page;
 use BookStack\Users\Models\User;
@@ -17,17 +18,20 @@ class CommentCreationNotification extends BaseActivityNotification
         /** @var Page $page */
         $page = $comment->entity;
 
-        $language = $notifiable->getLanguage();
+        $locale = $notifiable->getLocale();
 
-        return $this->newMailMessage($language)
-            ->subject(trans('notifications.new_comment_subject', ['pageName' => $page->getShortName()], $language))
-            ->line(trans('notifications.new_comment_intro', ['appName' => setting('app-name')], $language))
-            ->line(new ListMessageLine([
-                trans('notifications.detail_page_name', [], $language) => $page->name,
-                trans('notifications.detail_commenter', [], $language) => $this->user->name,
-                trans('notifications.detail_comment', [], $language) => strip_tags($comment->html),
-            ]))
-            ->action(trans('notifications.action_view_comment', [], $language), $page->getUrl('#comment' . $comment->local_id))
-            ->line($this->buildReasonFooterLine($language));
+        $listLines = array_filter([
+            $locale->trans('notifications.detail_page_name') => new EntityLinkMessageLine($page),
+            $locale->trans('notifications.detail_page_path') => $this->buildPagePathLine($page, $notifiable),
+            $locale->trans('notifications.detail_commenter') => $this->user->name,
+            $locale->trans('notifications.detail_comment') => strip_tags($comment->html),
+        ]);
+
+        return $this->newMailMessage($locale)
+            ->subject($locale->trans('notifications.new_comment_subject', ['pageName' => $page->getShortName()]))
+            ->line($locale->trans('notifications.new_comment_intro', ['appName' => setting('app-name')]))
+            ->line(new ListMessageLine($listLines))
+            ->action($locale->trans('notifications.action_view_comment'), $page->getUrl('#comment' . $comment->local_id))
+            ->line($this->buildReasonFooterLine($locale));
     }
 }

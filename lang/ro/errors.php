@@ -10,6 +10,7 @@ return [
 
     // Auth
     'error_user_exists_different_creds' => 'Un utilizator cu adresa de e-mail :email există deja, dar cu acreditări diferite.',
+    'auth_pre_register_theme_prevention' => 'User account could not be registered for the provided details',
     'email_already_confirmed' => 'E-mailul a fost deja confirmat, încearcă să te conectezi.',
     'email_confirmation_invalid' => 'Acest token de confirmare nu este valid sau a fost deja folosit, încercă să te înregistrezi din nou.',
     'email_confirmation_expired' => 'Token-ul de confirmare a expirat, a fost trimis un nou e-mail de confirmare.',
@@ -19,12 +20,10 @@ return [
     'ldap_extension_not_installed' => 'Extensia LDAP PHP nu este instalată',
     'ldap_cannot_connect' => 'Nu se poate conecta la serverul ldap, conexiunea inițială a eșuat',
     'saml_already_logged_in' => 'Deja conectat',
-    'saml_user_not_registered' => 'Utilizatorul :name nu este înregistrat și înregistrarea automată este dezactivată',
     'saml_no_email_address' => 'Nu s-a putut găsi o adresă de e-mail, pentru acest utilizator, în datele furnizate de sistemul extern de autentificare',
     'saml_invalid_response_id' => 'Solicitarea de la sistemul extern de autentificare nu este recunoscută de un proces inițiat de această aplicație. Navigarea înapoi după o autentificare ar putea cauza această problemă.',
     'saml_fail_authed' => 'Autentificarea folosind :system a eșuat, sistemul nu a furnizat autorizare cu succes',
     'oidc_already_logged_in' => 'Deja conectat',
-    'oidc_user_not_registered' => 'Utilizatorul :name nu este înregistrat și înregistrarea automată este dezactivată',
     'oidc_no_email_address' => 'Nu s-a putut găsi o adresă de e-mail, pentru acest utilizator, în datele furnizate de sistemul extern de autentificare',
     'oidc_fail_authed' => 'Autentificarea folosind :system a eșuat, sistemul nu a furnizat autorizare cu succes',
     'social_no_action_defined' => 'Nicio acțiune definită',
@@ -44,12 +43,16 @@ return [
     'cannot_get_image_from_url' => 'Nu se poate obține imaginea de la :url',
     'cannot_create_thumbs' => 'Serverul nu poate crea miniaturi. Verifică dacă este instalată extensia GD PHP.',
     'server_upload_limit' => 'Serverul nu permite încărcarea acestei dimensiuni. Te rog să încerci o dimensiune mai mică a fișierului.',
+    'server_post_limit' => 'The server cannot receive the provided amount of data. Try again with less data or a smaller file.',
     'uploaded'  => 'Serverul nu permite încărcarea acestei dimensiuni. Te rog să încerci o dimensiune mai mică a fișierului.',
 
     // Drawing & Images
     'image_upload_error' => 'A apărut o eroare la încărcarea imaginii',
     'image_upload_type_error' => 'Tipul de imagine încărcat nu este valid',
     'image_upload_replace_type' => 'Inlocuirea fisierului de imagine trebuie sa fie de acelasi tip',
+    'image_upload_memory_limit' => 'Failed to handle image upload and/or create thumbnails due to system resource limits.',
+    'image_thumbnail_memory_limit' => 'Failed to create image size variations due to system resource limits.',
+    'image_gallery_thumbnail_memory_limit' => 'Failed to create gallery thumbnails due to system resource limits.',
     'drawing_data_not_found' => 'Drawing data could not be loaded. The drawing file might no longer exist or you may not have permission to access it.',
 
     // Attachments

@@ -10,6 +10,7 @@ return [
 
     // Auth
     'error_user_exists_different_creds' => 'משתמש עם המייל :email כבר קיים אך עם פרטי הזדהות שונים',
+    'auth_pre_register_theme_prevention' => 'User account could not be registered for the provided details',
     'email_already_confirmed' => 'המייל כבר אומת, אנא נסה להתחבר',
     'email_confirmation_invalid' => 'מפתח האימות אינו תקין או שכבר נעשה בו שימוש, אנא נסה להרשם שנית',
     'email_confirmation_expired' => 'מפתח האימות פג-תוקף, מייל אימות חדש נשלח שוב.',
@@ -19,12 +20,10 @@ return [
     'ldap_extension_not_installed' => 'הרחבת LDAP עבור PHP לא מותקנת',
     'ldap_cannot_connect' => 'Cannot connect to ldap server, Initial connection failed',
     'saml_already_logged_in' => 'כבר מחובר',
-    'saml_user_not_registered' => 'The user :name is not registered and automatic registration is disabled',
     'saml_no_email_address' => 'Could not find an email address, for this user, in the data provided by the external authentication system',
     'saml_invalid_response_id' => 'The request from the external authentication system is not recognised by a process started by this application. Navigating back after a login could cause this issue.',
     'saml_fail_authed' => 'Login using :system failed, system did not provide successful authorization',
     'oidc_already_logged_in' => 'כבר מחובר',
-    'oidc_user_not_registered' => 'The user :name is not registered and automatic registration is disabled',
     'oidc_no_email_address' => 'Could not find an email address, for this user, in the data provided by the external authentication system',
     'oidc_fail_authed' => 'Login using :system failed, system did not provide successful authorization',
     'social_no_action_defined' => 'לא הוגדרה פעולה',
@@ -44,12 +43,16 @@ return [
     'cannot_get_image_from_url' => 'לא ניתן לקבל תמונה מ :url',
     'cannot_create_thumbs' => 'The server cannot create thumbnails. Please check you have the GD PHP extension installed.',
     'server_upload_limit' => 'השרת אינו מרשה העלאת קבצים במשקל זה. אנא נסה להעלות קובץ קטן יותר.',
+    'server_post_limit' => 'The server cannot receive the provided amount of data. Try again with less data or a smaller file.',
     'uploaded'  => 'השרת אינו מרשה העלאת קבצים במשקל זה. אנא נסה להעלות קובץ קטן יותר.',
 
     // Drawing & Images
     'image_upload_error' => 'התרחשה שגיאה במהלך העלאת התמונה',
     'image_upload_type_error' => 'התמונה שהועלתה אינה תקינה',
     'image_upload_replace_type' => 'Image file replacements must be of the same type',
+    'image_upload_memory_limit' => 'Failed to handle image upload and/or create thumbnails due to system resource limits.',
+    'image_thumbnail_memory_limit' => 'Failed to create image size variations due to system resource limits.',
+    'image_gallery_thumbnail_memory_limit' => 'Failed to create gallery thumbnails due to system resource limits.',
     'drawing_data_not_found' => 'Drawing data could not be loaded. The drawing file might no longer exist or you may not have permission to access it.',
 
     // Attachments

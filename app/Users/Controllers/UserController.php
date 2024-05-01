@@ -2,7 +2,7 @@
 
 namespace BookStack\Users\Controllers;
 
-use BookStack\Access\SocialAuthService;
+use BookStack\Access\SocialDriverManager;
 use BookStack\Exceptions\ImageUploadException;
 use BookStack\Exceptions\UserUpdateException;
 use BookStack\Http\Controller;
@@ -101,16 +101,15 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified user.
      */
-    public function edit(int $id, SocialAuthService $socialAuthService)
+    public function edit(int $id, SocialDriverManager $socialDriverManager)
     {
-        $this->preventGuestAccess();
-        $this->checkPermissionOrCurrentUser('users-manage', $id);
+        $this->checkPermission('users-manage');
 
         $user = $this->userRepo->getById($id);
         $user->load(['apiTokens', 'mfaValues']);
         $authMethod = ($user->system_name) ? 'system' : config('auth.method');
 
-        $activeSocialDrivers = $socialAuthService->getActiveDrivers();
+        $activeSocialDrivers = $socialDriverManager->getActive();
         $mfaMethods = $user->mfaValues->groupBy('method');
         $this->setPageTitle(trans('settings.user_profile'));
         $roles = Role::query()->orderBy('display_name', 'asc')->get();
@@ -134,8 +133,7 @@ class UserController extends Controller
     public function update(Request $request, int $id)
     {
         $this->preventAccessInDemoMode();
-        $this->preventGuestAccess();
-        $this->checkPermissionOrCurrentUser('users-manage', $id);
+        $this->checkPermission('users-manage');
 
         $validated = $this->validate($request, [
             'name'             => ['min:2', 'max:100'],
@@ -150,7 +148,7 @@ class UserController extends Controller
         ]);
 
         $user = $this->userRepo->getById($id);
-        $this->userRepo->update($user, $validated, userCan('users-manage'));
+        $this->userRepo->update($user, $validated, true);
 
         // Save profile image if in request
         if ($request->hasFile('profile_image')) {
@@ -168,9 +166,7 @@ class UserController extends Controller
             $user->save();
         }
 
-        $redirectUrl = userCan('users-manage') ? '/settings/users' : "/settings/users/{$user->id}";
-
-        return redirect($redirectUrl);
+        return redirect('/settings/users');
     }
 
     /**
@@ -178,8 +174,7 @@ class UserController extends Controller
      */
     public function delete(int $id)
     {
-        $this->preventGuestAccess();
-        $this->checkPermissionOrCurrentUser('users-manage', $id);
+        $this->checkPermission('users-manage');
 
         $user = $this->userRepo->getById($id);
         $this->setPageTitle(trans('settings.users_delete_named', ['userName' => $user->name]));
@@ -195,8 +190,7 @@ class UserController extends Controller
     public function destroy(Request $request, int $id)
     {
         $this->preventAccessInDemoMode();
-        $this->preventGuestAccess();
-        $this->checkPermissionOrCurrentUser('users-manage', $id);
+        $this->checkPermission('users-manage');
 
         $user = $this->userRepo->getById($id);
         $newOwnerId = intval($request->get('new_owner_id')) ?: null;

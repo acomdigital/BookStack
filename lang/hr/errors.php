@@ -10,6 +10,7 @@ return [
 
     // Auth
     'error_user_exists_different_creds' => 'Korisnik s mailom :email već postoji, ali s drugom vjerodajnicom.',
+    'auth_pre_register_theme_prevention' => 'User account could not be registered for the provided details',
     'email_already_confirmed' => 'Email je već potvrđen, pokušajte se logirati.',
     'email_confirmation_invalid' => 'Ova vjerodajnica nije valjana ili je već bila korištena. Pokušajte se ponovno registrirati.',
     'email_confirmation_expired' => 'Ova vjerodajnica je istekla. Poslan je novi email za pristup.',
@@ -19,12 +20,10 @@ return [
     'ldap_extension_not_installed' => 'LDAP PHP ekstenzija nije instalirana',
     'ldap_cannot_connect' => 'Nemoguće pristupiti ldap serveru, problem s mrežom',
     'saml_already_logged_in' => 'Već ste prijavljeni',
-    'saml_user_not_registered' => 'Korisnik :name nije registriran i automatska registracija je onemogućena',
     'saml_no_email_address' => 'Nismo pronašli email adresu za ovog korisnika u vanjskim sustavima',
     'saml_invalid_response_id' => 'Sustav za autentifikaciju nije prepoznat. Ovaj problem možda je nastao zbog vraćanja nakon prijave.',
     'saml_fail_authed' => 'Prijava pomoću :system nije uspjela zbog neuspješne autorizacije',
     'oidc_already_logged_in' => 'Već ste prijavljeni',
-    'oidc_user_not_registered' => 'Korisnik :name nije registriran i automatska registracija je onemogućena',
     'oidc_no_email_address' => 'Nije moguće pronaći adresu e-pošte za ovog korisnika u podacima koje pruža vanjski sustav za autentifikaciju',
     'oidc_fail_authed' => 'Prijavljivanje putem :system nije uspjelo. Sustav nije uspješno odobrio autorizaciju',
     'social_no_action_defined' => 'Nije definirana nijedna radnja',
@@ -44,12 +43,16 @@ return [
     'cannot_get_image_from_url' => 'Nemoguće preuzeti sliku sa :url',
     'cannot_create_thumbs' => 'Provjerite imate li instaliranu GD PHP ekstenziju.',
     'server_upload_limit' => 'Prevelika količina za server. Pokušajte prenijeti manju veličinu.',
+    'server_post_limit' => 'The server cannot receive the provided amount of data. Try again with less data or a smaller file.',
     'uploaded'  => 'Prevelika količina za server. Pokušajte prenijeti manju veličinu.',
 
     // Drawing & Images
     'image_upload_error' => 'Problem s prenosom slike',
     'image_upload_type_error' => 'Nepodržani format slike',
     'image_upload_replace_type' => 'Zamjene slikovnih datoteka moraju biti iste vrste',
+    'image_upload_memory_limit' => 'Failed to handle image upload and/or create thumbnails due to system resource limits.',
+    'image_thumbnail_memory_limit' => 'Failed to create image size variations due to system resource limits.',
+    'image_gallery_thumbnail_memory_limit' => 'Failed to create gallery thumbnails due to system resource limits.',
     'drawing_data_not_found' => 'Podaci o crtežu se ne mogu učitati. Datoteka crteža možda više ne postoji ili nemate dozvolu za pristupanje istoj.',
 
     // Attachments

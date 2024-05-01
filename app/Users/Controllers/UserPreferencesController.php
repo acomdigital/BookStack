@@ -3,9 +3,6 @@
 namespace BookStack\Users\Controllers;
 
 use BookStack\Http\Controller;
-use BookStack\Permissions\PermissionApplicator;
-use BookStack\Settings\UserNotificationPreferences;
-use BookStack\Settings\UserShortcutMap;
 use BookStack\Users\UserRepo;
 use Illuminate\Http\Request;
 
@@ -17,95 +14,13 @@ class UserPreferencesController extends Controller
     }
 
     /**
-     * Show the overview for user preferences.
-     */
-    public function index()
-    {
-        return view('users.preferences.index');
-    }
-
-    /**
-     * Show the user-specific interface shortcuts.
-     */
-    public function showShortcuts()
-    {
-        $shortcuts = UserShortcutMap::fromUserPreferences();
-        $enabled = setting()->getForCurrentUser('ui-shortcuts-enabled', false);
-
-        $this->setPageTitle(trans('preferences.shortcuts_interface'));
-
-        return view('users.preferences.shortcuts', [
-            'shortcuts' => $shortcuts,
-            'enabled' => $enabled,
-        ]);
-    }
-
-    /**
-     * Update the user-specific interface shortcuts.
-     */
-    public function updateShortcuts(Request $request)
-    {
-        $enabled = $request->get('enabled') === 'true';
-        $providedShortcuts = $request->get('shortcut', []);
-        $shortcuts = new UserShortcutMap($providedShortcuts);
-
-        setting()->putForCurrentUser('ui-shortcuts', $shortcuts->toJson());
-        setting()->putForCurrentUser('ui-shortcuts-enabled', $enabled);
-
-        $this->showSuccessNotification(trans('preferences.shortcuts_update_success'));
-
-        return redirect('/preferences/shortcuts');
-    }
-
-    /**
-     * Show the notification preferences for the current user.
-     */
-    public function showNotifications(PermissionApplicator $permissions)
-    {
-        $this->checkPermission('receive-notifications');
-        $this->preventGuestAccess();
-
-        $preferences = (new UserNotificationPreferences(user()));
-
-        $query = user()->watches()->getQuery();
-        $query = $permissions->restrictEntityRelationQuery($query, 'watches', 'watchable_id', 'watchable_type');
-        $query = $permissions->filterDeletedFromEntityRelationQuery($query, 'watches', 'watchable_id', 'watchable_type');
-        $watches = $query->with('watchable')->paginate(20);
-
-        $this->setPageTitle(trans('preferences.notifications'));
-        return view('users.preferences.notifications', [
-            'preferences' => $preferences,
-            'watches' => $watches,
-        ]);
-    }
-
-    /**
-     * Update the notification preferences for the current user.
-     */
-    public function updateNotifications(Request $request)
-    {
-        $this->checkPermission('receive-notifications');
-        $this->preventGuestAccess();
-        $data = $this->validate($request, [
-           'preferences' => ['required', 'array'],
-           'preferences.*' => ['required', 'string'],
-        ]);
-
-        $preferences = (new UserNotificationPreferences(user()));
-        $preferences->updateFromSettingsArray($data['preferences']);
-        $this->showSuccessNotification(trans('preferences.notifications_update_success'));
-
-        return redirect('/preferences/notifications');
-    }
-
-    /**
      * Update the preferred view format for a list view of the given type.
      */
     public function changeView(Request $request, string $type)
     {
         $valueViewTypes = ['books', 'bookshelves', 'bookshelf'];
         if (!in_array($type, $valueViewTypes)) {
-            return redirect()->back(500);
+            return $this->redirectToRequest($request);
         }
 
         $view = $request->get('view');
@@ -116,7 +31,7 @@ class UserPreferencesController extends Controller
         $key = $type . '_view_type';
         setting()->putForCurrentUser($key, $view);
 
-        return redirect()->back(302, [], "/");
+        return $this->redirectToRequest($request);
     }
 
     /**
@@ -126,7 +41,7 @@ class UserPreferencesController extends Controller
     {
         $validSortTypes = ['books', 'bookshelves', 'shelf_books', 'users', 'roles', 'webhooks', 'tags', 'page_revisions'];
         if (!in_array($type, $validSortTypes)) {
-            return redirect()->back(500);
+            return $this->redirectToRequest($request);
         }
 
         $sort = substr($request->get('sort') ?: 'name', 0, 50);
@@ -137,18 +52,18 @@ class UserPreferencesController extends Controller
         setting()->putForCurrentUser($sortKey, $sort);
         setting()->putForCurrentUser($orderKey, $order);
 
-        return redirect()->back(302, [], "/");
+        return $this->redirectToRequest($request);
     }
 
     /**
      * Toggle dark mode for the current user.
      */
-    public function toggleDarkMode()
+    public function toggleDarkMode(Request $request)
     {
-        $enabled = setting()->getForCurrentUser('dark-mode-enabled', false);
+        $enabled = setting()->getForCurrentUser('dark-mode-enabled');
         setting()->putForCurrentUser('dark-mode-enabled', $enabled ? 'false' : 'true');
 
-        return redirect()->back();
+        return $this->redirectToRequest($request);
     }
 
     /**

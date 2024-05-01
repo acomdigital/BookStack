@@ -20,7 +20,7 @@ return [
     'description' => 'Açıklama',
     'role' => 'Rol',
     'cover_image' => 'Kapak resmi',
-    'cover_image_description' => 'Bu görsel yaklaşık 440x250px boyutlarında olmalıdır.',
+    'cover_image_description' => 'This image should be approximately 440x250px although it will be flexibly scaled & cropped to fit the user interface in different scenarios as required, so actual dimensions for display will differ.',
 
     // Actions
     'actions' => 'İşlemler',
@@ -52,6 +52,7 @@ return [
     'filter_clear' => 'Filtreyi Kaldır',
     'download' => 'İndir',
     'open_in_tab' => 'Sekmede aç',
+    'open' => 'Open',
 
     // Sort Options
     'sort_options' => 'Sıralama Seçenekleri',

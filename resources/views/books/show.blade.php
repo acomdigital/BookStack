@@ -17,7 +17,7 @@
 
 @section('body')
 
-    <div class="mb-s">
+    <div class="mb-s print-hidden">
         @include('entities.breadcrumbs', ['crumbs' => [
             $book,
         ]])
@@ -26,7 +26,7 @@
     <main class="content-wrap card">
         <h1 class="break-text">{{$book->name}}</h1>
         <div refs="entity-search@contentView" class="book-content">
-            <p class="text-muted">{!! nl2br(e($book->description)) !!}</p>
+            <div class="text-muted break-text">{!! $book->descriptionHtml() !!}</div>
             @if(count($bookChildren) > 0)
                 <div class="entity-list book-contents">
                     @foreach($bookChildren as $childElement)
@@ -142,7 +142,7 @@
             @if($watchOptions->canWatch() && !$watchOptions->isWatching())
                 @include('entities.watch-action', ['entity' => $book])
             @endif
-            @if(signedInUser())
+            @if(!user()->isGuest())
                 @include('entities.favourite-action', ['entity' => $book])
             @endif
             @if(userCan('content-export'))
@@ -171,7 +171,7 @@
     @endif
 
     @if(count($activity) > 0)
-        <div class="mb-xl">
+        <div id="recent-activity" class="mb-xl">
             <h5>{{ trans('entities.recent_activity') }}</h5>
             @include('common.activity-list', ['activity' => $activity])
         </div>

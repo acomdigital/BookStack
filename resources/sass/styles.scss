@@ -23,6 +23,10 @@
 @import "lists";
 @import "pages";
 
+@media print {
+  @import "print";
+}
+
 // Jquery Sortable Styles
 .dragged {
   position: absolute;
@@ -297,6 +301,14 @@ $btt-size: 40px;
   width: 100%;
   height: 100%;
   z-index: 150;
+}
+
+@include between($s, $m) {
+  #home-default > .grid.third {
+    display: block;
+    columns: 2;
+    column-gap: $-l !important;
+  }
 }
 
 .list-sort-container {
