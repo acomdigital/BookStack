@@ -206,6 +206,7 @@ body.flexbox-support #entity-selector-wrap .popup-body .form-group {
   position: relative;
   @include lightDark(background-color, #eee, #222);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23a9a9a9' fill-opacity='0.52' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
 .image-manager-filters {
   box-shadow: $bs-med;
   border-radius: 4px;
@@ -1168,7 +1169,7 @@ input.scroll-box-search, .scroll-box-header-item {
 }
 .scroll-box[refs="shelf-sort@all-book-list"] [data-action="remove"],
 .scroll-box[refs="shelf-sort@all-book-list"] [data-action="move_up"],
-.scroll-box[refs="shelf-sort@all-book-list"] [data-action="move_down"],
+.scroll-box[refs="shelf-sort@all-book-list"] [data-action="move_down"]
 {
   display: none;
 }
