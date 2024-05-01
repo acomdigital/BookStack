@@ -10,8 +10,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - db:/var/lib/mysql
-    ports:
-      - 33061:3306
+
   app:
     image: docker.qix.sx/elexis/bookstack:v24.02.3-ee
     environment:
