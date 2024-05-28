@@ -13,6 +13,9 @@ services:
 
   app:
     image: docker.qix.sx/elexis/bookstack:v24.02.3-ee
+    build:
+      context: .
+      dockerfile: ./dev/docker/Dockerfile
     environment:
       DB_CONNECTION: mysql
       TEST_DATABASE_URL: mysql://bookstack-test:bookstack-test@db/bookstack-test
