@@ -27,6 +27,9 @@
   @import "print";
 }
 
+@import "custom-variables";
+@import "custom-styles";
+
 // Jquery Sortable Styles
 .dragged {
   position: absolute;
@@ -305,9 +308,9 @@ $btt-size: 40px;
 
 @include between($s, $m) {
   #home-default > .grid.third {
-    display: block;
-    columns: 2;
-    column-gap: $-l !important;
+	display: block;
+	columns: 2;
+	column-gap: $-l !important;
   }
 }
 
@@ -357,6 +360,3 @@ $btt-size: 40px;
 	}
   }
 }
-
-@import "custom-variables";
-@import "custom-styles";

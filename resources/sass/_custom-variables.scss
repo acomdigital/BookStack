@@ -10,7 +10,7 @@ $text: 'Roboto', sans-serif;
 $mono: 'Roboto', sans-serif;
 $heading: $text;
 // Colours
-:root {
+:root, body {
   --color-primary: #929292 !important;
   --color-primary-light: #f2f2f2 !important;
   --color-link: #929292 !important;
@@ -20,6 +20,7 @@ $heading: $text;
   --color-book: #077b70 !important;
   --color-bookshelf: #a94747 !important;
 }
+
 $positive: #51a351;
 $negative: #bd362f;
 $info: #2f96b4;
