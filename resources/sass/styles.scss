@@ -1,9 +1,7 @@
 @use "sass:math";
 
 @import "reset";
-@import "fonts";
 @import "variables";
-@import "custom-variables";
 @import "mixins";
 @import "spacing";
 @import "opacity";
@@ -23,12 +21,13 @@
 @import "footer";
 @import "lists";
 @import "pages";
-//@import "content";
+@import "content";
 
 @media print {
   @import "print";
 }
 
+@import "custom-variables";
 @import "custom-styles";
 
 // Jquery Sortable Styles
@@ -37,7 +36,6 @@
   opacity: 0.5;
   z-index: 2000;
 }
-
 body.dragging, body.dragging * {
   cursor: move !important;
 }
@@ -48,26 +46,21 @@ body.dragging, body.dragging * {
   @include lightDark(background-color, #eee, #000);
   width: 30px;
   height: 30px;
-
   &.med {
 	width: 40px;
 	height: 40px;
   }
-
   &.large {
 	width: 80px;
 	height: 80px;
   }
-
   &.huge {
 	width: 120px;
 	height: 120px;
   }
-
   &.square {
 	border-radius: 3px;
   }
-
   &[src$="user_avatar.png"] {
 	@include whenDark {
 	  filter: invert(1);
@@ -81,7 +74,6 @@ $loadingSize: 10px;
   position: relative;
   display: block;
   margin: $-xl auto;
-
   > div {
 	width: $loadingSize;
 	height: $loadingSize;
@@ -98,66 +90,21 @@ $loadingSize: 10px;
 	background-color: var(--color-page);
 	animation-delay: -300ms;
   }
-
   > div:first-child {
 	left: -($loadingSize+$-xs);
 	background-color: var(--color-book);
 	animation-delay: -600ms;
   }
-
   > div:last-of-type {
 	left: $loadingSize+$-xs;
 	background-color: var(--color-chapter);
 	animation-delay: 0ms;
   }
-
   > span {
 	margin-inline-start: $-s;
 	font-style: italic;
 	color: #888;
 	vertical-align: top;
-  }
-}
-
-// Back to top link
-$btt-size: 40px;
-[back-to-top] {
-  background-color: var(--color-primary);
-  position: fixed;
-  bottom: $-m;
-  right: $-l;
-  padding: 5px 7px;
-  cursor: pointer;
-  color: #FFF;
-  fill: #FFF;
-
-  svg {
-	width: math.div($btt-size, 1.5);
-	height: math.div($btt-size, 1.5);
-	margin-inline-end: 4px;
-  }
-
-  width: $btt-size;
-  height: $btt-size;
-  border-radius: $btt-size;
-  transition: all ease-in-out 180ms;
-  opacity: 0;
-  z-index: 999;
-  overflow: hidden;
-
-  &:hover {
-	width: $btt-size*3.4;
-	opacity: 1 !important;
-  }
-
-  .inner {
-	width: $btt-size*3.4;
-  }
-
-  span {
-	position: relative;
-	vertical-align: top;
-	line-height: 2;
   }
 }
 
@@ -171,49 +118,10 @@ $btt-size: 40px;
   display: block;
   box-shadow: $bs-dark;
   font-weight: bold;
-
   &:focus {
 	top: $-xl;
 	outline-offset: -10px;
 	outline: 2px dotted var(--color-link);
-  }
-}
-
-.contained-search-box {
-  display: flex;
-  height: 38px;
-
-  input, button {
-	border-radius: 0;
-	border: 1px solid #ddd;
-	@include lightDark(border-color, #ddd, #000);
-	margin-inline-start: -1px;
-  }
-
-  input {
-	flex: 5;
-	padding: $-xs $-s;
-
-	&:focus, &:active {
-	  outline: 0;
-	}
-  }
-
-  button {
-	width: 60px;
-  }
-
-  button i {
-	padding: 0;
-  }
-
-  button.cancel.active {
-	background-color: $negative;
-	color: #EEE;
-  }
-
-  svg {
-	margin: 0;
   }
 }
 
@@ -223,7 +131,6 @@ $btt-size: 40px;
   border-radius: 3px;
   overflow: hidden;
   font-size: 0.8em;
-
   input[type="text"] {
 	width: 100%;
 	display: block;
@@ -233,7 +140,6 @@ $btt-size: 40px;
 	font-size: 16px;
 	padding: $-s $-m;
   }
-
   .entity-list {
 	overflow-y: scroll;
 	height: 400px;
@@ -241,69 +147,43 @@ $btt-size: 40px;
 	margin-inline-end: 0;
 	margin-inline-start: 0;
   }
-
   .entity-list-item {
 	@include lightDark(background-color, #fff, #222);
   }
-
   .entity-list-item p {
 	margin-bottom: 0;
   }
-
   .entity-list-item:focus {
 	outline: 2px dotted var(--color-primary);
 	outline-offset: -4px;
   }
-
   .entity-list-item.selected {
 	@include lightDark(background-color, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
   }
-
   .loading {
 	height: 400px;
 	padding-top: $-l;
   }
-
-  .entity-selector-add button {
-	margin: 0;
-	display: block;
-	width: 100%;
-	border: 0;
-	border-top: 1px solid #DDD;
-  }
-
   &.compact {
 	font-size: 10px;
-
 	.entity-item-snippet {
 	  display: none;
 	}
-
 	h4 {
 	  font-size: 14px;
 	}
   }
 }
 
-.scroll-box {
-  max-height: 250px;
-  overflow-y: scroll;
-  border: 1px solid;
-  @include lightDark(border-color, #DDD, #000);
-  border-radius: 3px;
-  min-height: 20px;
-  @include lightDark(background-color, #EEE, #000);
-}
-
 .fullscreen {
-  border: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
+  border:0;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
   z-index: 150;
 }
 
@@ -317,11 +197,9 @@ $btt-size: 40px;
 
 .list-sort-container {
   display: inline-block;
-
   form {
 	display: inline-block;
   }
-
   .list-sort {
 	display: inline-grid;
 	margin-inline-start: $-s;
@@ -331,31 +209,25 @@ $btt-size: 40px;
 	@include lightDark(border-color, #ddd, #444);
 	border-radius: 4px;
   }
-
   .list-sort-label {
 	font-weight: bold;
 	display: inline-block;
 	@include lightDark(color, #555, #888);
   }
-
   .list-sort-type {
 	text-align: start;
   }
-
   .list-sort-type, .list-sort-dir {
 	padding: $-xs $-s;
 	cursor: pointer;
   }
-
   .list-sort-dir {
 	border-inline-start: 2px solid #DDD;
 	color: #888;
 	@include lightDark(border-color, #ddd, #444);
-
 	.svg-icon {
 	  transition: transform ease-in-out 120ms;
 	}
-
 	&:hover .svg-icon {
 	  transform: rotate(180deg);
 	}

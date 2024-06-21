@@ -253,6 +253,15 @@ body.flexbox {
   position: relative;
 }
 
+.fixed {
+  position: fixed;
+  z-index: 20;
+  &.top-right {
+    top: 0;
+    right: 0;
+  }
+}
+
 .hidden {
   display: none !important;
 }
@@ -297,6 +306,19 @@ body.flexbox {
   }
 }
 
+[hidden] {
+  display: none !important;
+}
+
+.screen-reader-only {
+  position: absolute;
+  inset-inline-start: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 /**
  * Border radiuses
  */
@@ -339,20 +361,6 @@ body.flexbox {
   margin-inline-end: $-xl;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas: "a b c";
-  grid-column-gap: $-xxl;
-  .tri-layout-right {
-    grid-area: c;
-    min-width: 0;
-  }
-  .tri-layout-left {
-    grid-area: a;
-    min-width: 0;
-  }
-  .tri-layout-middle {
-    grid-area: b;
-    padding-top: $-m;
-    min-width: 0;
-  }
   grid-column-gap: $-xl;
   position: relative;
 }
@@ -363,11 +371,6 @@ body.flexbox {
   min-width: 0;
   z-index: 4;
 }
-@include between($l, $xxl) {
-  .tri-layout-left {
-    position: sticky;
-    top: $-m;
-  }
 .tri-layout-sides-content {
   display: grid;
   grid-template-areas: "a b c";
@@ -388,7 +391,7 @@ body.flexbox {
   grid-area: a;
   min-width: 0;
 }
-}
+
 @include larger-than($xxl) {
   .tri-layout-left-contents, .tri-layout-right-contents {
     padding: $-xl $-m;
