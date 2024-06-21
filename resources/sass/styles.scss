@@ -3,6 +3,7 @@
 @import "reset";
 @import "fonts";
 @import "variables";
+@import "custom-variables";
 @import "mixins";
 @import "spacing";
 @import "opacity";
@@ -22,13 +23,12 @@
 @import "footer";
 @import "lists";
 @import "pages";
-@import "content";
+//@import "content";
 
 @media print {
   @import "print";
 }
 
-@import "custom-variables";
 @import "custom-styles";
 
 // Jquery Sortable Styles
