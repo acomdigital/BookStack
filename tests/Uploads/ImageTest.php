@@ -119,6 +119,33 @@ class ImageTest extends TestCase
         $this->files->deleteAtRelativePath($relPath);
     }
 
+    public function test_image_file_update_allows_case_differences()
+    {
+        $page = $this->entities->page();
+        $this->asEditor();
+
+        $imgDetails = $this->files->uploadGalleryImageToPage($this, $page);
+        $relPath = $imgDetails['path'];
+
+        $newUpload = $this->files->uploadedImage('updated-image.PNG', 'compressed.png');
+        $this->assertFileEquals($this->files->testFilePath('test-image.png'), public_path($relPath));
+
+        $imageId = $imgDetails['response']->id;
+        $image = Image::findOrFail($imageId);
+        $image->updated_at = now()->subMonth();
+        $image->save();
+
+        $this->call('PUT', "/images/{$imageId}/file", [], [], ['file' => $newUpload])
+            ->assertOk();
+
+        $this->assertFileEquals($this->files->testFilePath('compressed.png'), public_path($relPath));
+
+        $image->refresh();
+        $this->assertTrue($image->updated_at->gt(now()->subMinute()));
+
+        $this->files->deleteAtRelativePath($relPath);
+    }
+
     public function test_image_file_update_does_not_allow_change_in_image_extension()
     {
         $page = $this->entities->page();
@@ -597,6 +624,40 @@ class ImageTest extends TestCase
 
         $this->assertFileExists($this->files->relativeToFullPath($expectedThumbPath));
         $this->files->deleteAtRelativePath($relPath);
+    }
+
+    public function test_gif_thumbnail_generation()
+    {
+        $this->asAdmin();
+        $originalFile = $this->files->testFilePath('animated.gif');
+        $originalFileSize = filesize($originalFile);
+
+        $imgDetails = $this->files->uploadGalleryImageToPage($this, $this->entities->page(), 'animated.gif');
+        $relPath = $imgDetails['path'];
+
+        $this->assertTrue(file_exists(public_path($relPath)), 'Uploaded image found at path: ' . public_path($relPath));
+        $galleryThumb = $imgDetails['response']->thumbs->gallery;
+        $displayThumb = $imgDetails['response']->thumbs->display;
+
+        // Ensure display thumbnail is original image
+        $this->assertStringEndsWith($imgDetails['path'], $displayThumb);
+        $this->assertStringNotContainsString('thumbs', $displayThumb);
+
+        // Ensure gallery thumbnail is reduced image (single frame)
+        $galleryThumbRelPath = implode('/', array_slice(explode('/', $galleryThumb), 3));
+        $galleryThumbPath = public_path($galleryThumbRelPath);
+        $galleryFileSize = filesize($galleryThumbPath);
+
+        // Basic scan of GIF content to check frame count
+        $originalFrameCount = count(explode("\x00\x21\xF9", file_get_contents($originalFile)));
+        $galleryFrameCount = count(explode("\x00\x21\xF9", file_get_contents($galleryThumbPath)));
+
+        $this->files->deleteAtRelativePath($relPath);
+        $this->files->deleteAtRelativePath($galleryThumbRelPath);
+
+        $this->assertNotEquals($originalFileSize, $galleryFileSize);
+        $this->assertEquals(3, $originalFrameCount);
+        $this->assertEquals(1, $galleryFrameCount);
     }
 
     protected function getTestProfileImage()

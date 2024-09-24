@@ -5,7 +5,7 @@
  */
 
 return [
-    'my_account' => 'My Account',
+    'my_account' => 'Fy Nghyfrif',
 
     'shortcuts' => 'Shortcuts',
     'shortcuts_interface' => 'UI Shortcut Preferences',
@@ -27,7 +27,7 @@ return [
     'notifications_save' => 'Save Preferences',
     'notifications_update_success' => 'Notification preferences have been updated!',
     'notifications_watched' => 'Watched & Ignored Items',
-    'notifications_watched_desc' => ' Below are the items that have custom watch preferences applied. To update your preferences for these, view the item then find the watch options in the sidebar.',
+    'notifications_watched_desc' => 'Below are the items that have custom watch preferences applied. To update your preferences for these, view the item then find the watch options in the sidebar.',
 
     'auth' => 'Access & Security',
     'auth_change_password' => 'Change Password',

@@ -52,7 +52,7 @@ return [
     // Revisions
     'revision_restore' => 'herstelde revisie',
     'revision_delete' => 'verwijderde revisie',
-    'revision_delete_notification' => 'Revisie met succes verwijderd',
+    'revision_delete_notification' => 'Revisie succesvol verwijderd',
 
     // Favourites
     'favourite_add_notification' => '":name" is toegevoegd aan je favorieten',
@@ -66,14 +66,14 @@ return [
     'auth_register' => 'registreerde als nieuwe gebruiker',
     'auth_password_reset_request' => 'vraagde een nieuw gebruikerswachtwoord aan',
     'auth_password_reset_update' => 'stelde gebruikerswachtwoord opnieuw in',
-    'mfa_setup_method' => 'heeft zijn meervoudige verificatie methode ingesteld',
+    'mfa_setup_method' => 'stelde meervoudige verificatie methode in',
     'mfa_setup_method_notification' => 'Meervoudige verificatie methode succesvol geconfigureerd',
-    'mfa_remove_method' => 'heeft zijn meervoudige verificatie methode verwijderd',
+    'mfa_remove_method' => 'verwijderde meervoudige verificatie methode',
     'mfa_remove_method_notification' => 'Meervoudige verificatie methode is succesvol verwijderd',
 
     // Settings
     'settings_update' => 'werkte instellingen bij',
-    'settings_update_notification' => 'Instellingen met succes bijgewerkt',
+    'settings_update_notification' => 'Instellingen succesvol bijgewerkt',
     'maintenance_action_run' => 'voerde onderhoudsactie uit',
 
     // Webhooks
@@ -86,7 +86,7 @@ return [
 
     // Users
     'user_create' => 'maakte gebruiker aan',
-    'user_create_notification' => 'Gebruiker met succes aangemaakt',
+    'user_create_notification' => 'Gebruiker succesvol aangemaakt',
     'user_update' => 'werkte gebruiker bij',
     'user_update_notification' => 'Gebruiker succesvol bijgewerkt',
     'user_delete' => 'verwijderde gebruiker',
@@ -94,11 +94,11 @@ return [
 
     // API Tokens
     'api_token_create' => 'API-token aangemaakt',
-    'api_token_create_notification' => 'API-token met succes aangemaakt',
-    'api_token_update' => 'geüpdatet API-token',
-    'api_token_update_notification' => 'API-token met succes bijgewerkt',
-    'api_token_delete' => 'verwijderd API-token',
-    'api_token_delete_notification' => 'API-token met succes verwijderd',
+    'api_token_create_notification' => 'API-token succesvol aangemaakt',
+    'api_token_update' => 'wijzigde API-token',
+    'api_token_update_notification' => 'API-token succesvol bijgewerkt',
+    'api_token_delete' => 'verwijderde API-token',
+    'api_token_delete_notification' => 'API-token succesvol verwijderd',
 
     // Roles
     'role_create' => 'maakte rol aan',
@@ -110,8 +110,8 @@ return [
 
     // Recycle Bin
     'recycle_bin_empty' => 'leegde prullenbak',
-    'recycle_bin_restore' => 'is van prullenbak hersteld',
-    'recycle_bin_destroy' => 'is van prullenbak verwijderd',
+    'recycle_bin_restore' => 'herstelde van prullenbak',
+    'recycle_bin_destroy' => 'verwijderde van prullenbak',
 
     // Comments
     'commented_on'                => 'reageerde op',

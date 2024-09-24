@@ -7,7 +7,7 @@
  */
 return [
     // General editor terms
-    'general' => 'General',
+    'general' => 'Cyffredin',
     'advanced' => 'Advanced',
     'none' => 'Dim un',
     'cancel' => 'Canslo',
@@ -59,7 +59,7 @@ return [
     'list_task' => 'Task list',
     'indent_increase' => 'Increase indent',
     'indent_decrease' => 'Decrease indent',
-    'table' => 'Table',
+    'table' => 'Bwrdd',
     'insert_image' => 'Insert image',
     'insert_image_title' => 'Insert/Edit Image',
     'insert_link' => 'Insert/edit link',
@@ -136,7 +136,7 @@ return [
     'cell_border_ridge' => 'Ridge',
     'cell_border_inset' => 'Inset',
     'cell_border_outset' => 'Outset',
-    'cell_border_none' => 'None',
+    'cell_border_none' => 'Dim un',
     'cell_border_hidden' => 'Hidden',
 
     // Images, links, details/summary & embed
