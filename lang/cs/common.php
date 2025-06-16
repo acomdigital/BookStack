@@ -30,6 +30,8 @@ return [
     'create' => 'Vytvořit',
     'update' => 'Aktualizovat',
     'edit' => 'Upravit',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Seřadit',
     'move' => 'Přesunout',
     'copy' => 'Kopírovat',
@@ -73,8 +75,8 @@ return [
     'toggle_details' => 'Přepnout podrobnosti',
     'toggle_thumbnails' => 'Přepnout náhledy',
     'details' => 'Podrobnosti',
-    'grid_view' => 'Zobrazení mřížky',
-    'list_view' => 'Zobrazení seznamu',
+    'grid_view' => 'Zobrazit mřížku',
+    'list_view' => 'Zobrazit seznam',
     'default' => 'Výchozí',
     'breadcrumb' => 'Drobečková navigace',
     'status' => 'Stav',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Zásady ochrany osobních údajů',
     'terms_of_service' => 'Podmínky služby',
+
+    // OpenSearch
+    'opensearch_description' => 'Vyhledat :appName',
 ];

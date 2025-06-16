@@ -30,6 +30,8 @@ return [
     'create' => 'Vytvoriť',
     'update' => 'Aktualizovať',
     'edit' => 'Editovať',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Zoradiť',
     'move' => 'Presunúť',
     'copy' => 'Kopírovať',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Zásady ochrany osobných údajov',
     'terms_of_service' => 'Podmienky používania',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

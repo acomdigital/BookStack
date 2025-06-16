@@ -78,6 +78,7 @@ return [
     // Users
     'users_cannot_delete_only_admin' => 'No se puede borrar el único administrador',
     'users_cannot_delete_guest' => 'No se puede borrar el usuario invitado',
+    'users_could_not_send_invite' => 'No se pudo crear el usuario porque no se pudo enviar el correo de invitación',
 
     // Roles
     'role_cannot_be_edited' => 'Este rol no puede ser editado',
@@ -103,6 +104,18 @@ return [
     'error_occurred' => 'Ha ocurrido un error',
     'app_down' => 'La aplicación :appName se encuentra caída en este momento',
     'back_soon' => 'Volverá a estar operativa pronto.',
+
+    // Import
+    'import_zip_cant_read' => 'No se pudo leer el archivo ZIP.',
+    'import_zip_cant_decode_data' => 'No se pudo encontrar y decodificar el archivo data.json. en el archivo ZIP.',
+    'import_zip_no_data' => 'Los datos del archivo ZIP no contienen ningún libro, capítulo o contenido de página.',
+    'import_validation_failed' => 'Error al validar la importación del ZIP con errores:',
+    'import_zip_failed_notification' => 'Error al importar archivo ZIP.',
+    'import_perms_books' => 'Le faltan los permisos necesarios para crear libros.',
+    'import_perms_chapters' => 'Le faltan los permisos necesarios para crear capítulos.',
+    'import_perms_pages' => 'Le faltan los permisos necesarios para crear páginas.',
+    'import_perms_images' => 'Le faltan los permisos necesarios para crear imágenes.',
+    'import_perms_attachments' => 'Le faltan los permisos necesarios para crear adjuntos.',
 
     // API errors
     'api_no_authorization_found' => 'No se encontró ningún token de autorización en la solicitud',

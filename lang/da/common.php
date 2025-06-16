@@ -30,6 +30,8 @@ return [
     'create' => 'Opret',
     'update' => 'Opdater',
     'edit' => 'Rediger',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Sorter',
     'move' => 'Flyt',
     'copy' => 'Kopier',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Privatlivspolitik',
     'terms_of_service' => 'Tjenestevilkår',
+
+    // OpenSearch
+    'opensearch_description' => 'Søg :appName',
 ];

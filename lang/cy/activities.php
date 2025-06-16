@@ -59,22 +59,22 @@ return [
     'favourite_remove_notification' => 'Mae ":name" wedi\'i tynnu o\'ch ffefrynnau',
 
     // Watching
-    'watch_update_level_notification' => 'Watch preferences successfully updated',
+    'watch_update_level_notification' => 'Dewisiadau gwylio wedi’u diweddaru\'n llwyddiannus',
 
     // Auth
     'auth_login' => 'wedi\'u mewngofnodi',
     'auth_register' => 'wedi\'i cofrestru\'n ddefnyddiwr newydd',
     'auth_password_reset_request' => 'wedi ceisio ailosod gair pass defnyddiwr',
     'auth_password_reset_update' => 'ailosododd air pass defnyddiwr',
-    'mfa_setup_method' => 'configured MFA method',
+    'mfa_setup_method' => 'Dull Dilysu Aml-ffactor wedi’i ffurfweddu',
     'mfa_setup_method_notification' => 'Dull aml-ffactor wedi\'i ffurfweddu\'n llwyddiannus',
-    'mfa_remove_method' => 'removed MFA method',
+    'mfa_remove_method' => 'Dull Dilysu Aml-ffactor wedi\'i ddileu',
     'mfa_remove_method_notification' => 'Llwyddwyd i ddileu dull aml-ffactor',
 
     // Settings
     'settings_update' => 'diweddarodd osodiadau',
     'settings_update_notification' => 'Gosodiadau wedi\'i diweddaru\'n llwyddiannus',
-    'maintenance_action_run' => 'ran maintenance action',
+    'maintenance_action_run' => 'rhedeg gweithred cynnal a chadw',
 
     // Webhooks
     'webhook_create' => 'webhook wedi creu',
@@ -83,6 +83,14 @@ return [
     'webhook_update_notification' => 'Webhook wedi\'i diweddaru\'n llwyddiannus',
     'webhook_delete' => 'webhook wedi\'i dileu',
     'webhook_delete_notification' => 'Webhook wedi\'i dileu\'n llwyddiannus',
+
+    // Imports
+    'import_create' => 'creodd fewnforyn',
+    'import_create_notification' => 'Mewnforyn wedi\'i lwytho i fyny\'n llwyddiannus',
+    'import_run' => 'diweddarodd fewnforyn',
+    'import_run_notification' => 'Cynnwys wedi\'i fewnforio\'n llwyddiannus',
+    'import_delete' => 'dileodd fewnforyn',
+    'import_delete_notification' => 'Mewnforyn wedi\'i ddileu\'n llwyddiannus',
 
     // Users
     'user_create' => 'creodd ddefnyddiwr',
@@ -111,13 +119,21 @@ return [
     // Recycle Bin
     'recycle_bin_empty' => 'gwagodd fin ailgylchu',
     'recycle_bin_restore' => 'wedi\'i adfer o\'r bin ailgylchu',
-    'recycle_bin_destroy' => 'removed from recycle bin',
+    'recycle_bin_destroy' => 'symudwyd o’r bin ailgylchu',
 
     // Comments
     'commented_on'                => 'gwnaeth sylwadau ar',
     'comment_create'              => 'ychwanegodd sylw',
     'comment_update'              => 'diweddarodd sylw',
     'comment_delete'              => 'dileodd sylw',
+
+    // Sort Rules
+    'sort_rule_create' => 'created sort rule',
+    'sort_rule_create_notification' => 'Sort rule successfully created',
+    'sort_rule_update' => 'updated sort rule',
+    'sort_rule_update_notification' => 'Sort rule successfully updated',
+    'sort_rule_delete' => 'deleted sort rule',
+    'sort_rule_delete_notification' => 'Sort rule successfully deleted',
 
     // Other
     'permissions_update'          => 'caniatadau wedi\'u diweddaru',

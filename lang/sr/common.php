@@ -30,6 +30,8 @@ return [
     'create' => 'Креирај',
     'update' => 'Ажурирање',
     'edit' => 'Уреди',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Разврстај',
     'move' => 'Премести',
     'copy' => 'Умножи',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Правила о приватности',
     'terms_of_service' => 'Услови коришћења',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

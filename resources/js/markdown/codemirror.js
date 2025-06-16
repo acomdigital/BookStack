@@ -1,6 +1,6 @@
 import {provideKeyBindings} from './shortcuts';
-import {debounce} from '../services/util';
-import {Clipboard} from '../services/clipboard';
+import {debounce} from '../services/util.ts';
+import {Clipboard} from '../services/clipboard.ts';
 
 /**
  * Initiate the codemirror instance for the markdown editor.

@@ -30,6 +30,8 @@ return [
     'create' => 'Sukurti',
     'update' => 'Atnaujinti',
     'edit' => 'Redaguoti',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Rūšiuoti',
     'move' => 'Perkelti',
     'copy' => 'Kopijuoti',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Privatumo politika',
     'terms_of_service' => 'Paslaugų teikimo paslaugos',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

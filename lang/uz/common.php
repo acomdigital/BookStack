@@ -30,6 +30,8 @@ return [
     'create' => 'Yaratish',
     'update' => 'Yangilash',
     'edit' => 'Tahrirlash',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Saralash',
     'move' => 'Ko‘chirish',
     'copy' => 'Nusxalash',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Maxfiylik siyosati',
     'terms_of_service' => 'Xizmat ko‘rsatish shartlari',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

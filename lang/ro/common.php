@@ -30,6 +30,8 @@ return [
     'create' => 'Crează',
     'update' => 'Actualzează',
     'edit' => 'Editează',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Sortează',
     'move' => 'Mută',
     'copy' => 'Copiază',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Politică de confidențialitate',
     'terms_of_service' => 'Termeni și condiții',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

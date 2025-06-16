@@ -30,6 +30,8 @@ return [
     'create' => 'Створити',
     'update' => 'Оновити',
     'edit' => 'Редагувати',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Сортувати',
     'move' => 'Перемістити',
     'copy' => 'Копіювати',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Політика приватності',
     'terms_of_service' => 'Умови використання',
+
+    // OpenSearch
+    'opensearch_description' => 'Шукати :appName',
 ];

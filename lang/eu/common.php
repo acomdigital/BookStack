@@ -30,6 +30,8 @@ return [
     'create' => 'Sortu',
     'update' => 'Eguneratu',
     'edit' => 'Editatu',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Ordenatu',
     'move' => 'Mugitu',
     'copy' => 'Kopiatu',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Pribatutasun politika',
     'terms_of_service' => 'Zerbitzu-baldintzak',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

@@ -78,6 +78,7 @@ return [
     // Users
     'users_cannot_delete_only_admin' => '唯一の管理者を削除することはできません',
     'users_cannot_delete_guest' => 'ゲストユーザを削除することはできません',
+    'users_could_not_send_invite' => '招待メールの送信に失敗したため、ユーザーを作成できませんでした。',
 
     // Roles
     'role_cannot_be_edited' => 'この役割は編集できません',
@@ -103,6 +104,18 @@ return [
     'error_occurred' => 'エラーが発生しました',
     'app_down' => ':appNameは現在停止しています',
     'back_soon' => '回復までしばらくお待ちください。',
+
+    // Import
+    'import_zip_cant_read' => 'ZIPファイルを読み込めません。',
+    'import_zip_cant_decode_data' => 'ZIPファイル内に data.json が見つからないかデコードできませんでした。',
+    'import_zip_no_data' => 'ZIPファイルのデータにブック、チャプター、またはページコンテンツがありません。',
+    'import_validation_failed' => 'エラーによりインポートZIPの検証に失敗しました:',
+    'import_zip_failed_notification' => 'ZIP ファイルのインポートに失敗しました。',
+    'import_perms_books' => 'ブックを作成するために必要な権限がありません。',
+    'import_perms_chapters' => 'チャプタを作成するために必要な権限がありません。',
+    'import_perms_pages' => 'ページを作成するために必要な権限がありません。',
+    'import_perms_images' => '画像を作成するために必要な権限がありません。',
+    'import_perms_attachments' => '添付ファイルを作成するために必要な権限がありません。',
 
     // API errors
     'api_no_authorization_found' => 'リクエストに認証トークンが見つかりません',

@@ -30,6 +30,8 @@ return [
     'create' => 'Aanmaken',
     'update' => 'Bijwerken',
     'edit' => 'Bewerk',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Sorteer',
     'move' => 'Verplaats',
     'copy' => 'Kopieer',
@@ -62,7 +64,7 @@ return [
     'sort_name' => 'Naam',
     'sort_default' => 'Standaard',
     'sort_created_at' => 'Aanmaakdatum',
-    'sort_updated_at' => 'Gewijzigd op',
+    'sort_updated_at' => 'Bijwerkdatum',
 
     // Misc
     'deleted_user' => 'Verwijderde gebruiker',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Privacybeleid',
     'terms_of_service' => 'Algemene voorwaarden',
+
+    // OpenSearch
+    'opensearch_description' => 'Zoek in :appName',
 ];

@@ -30,6 +30,8 @@ return [
     'create' => 'Lisa',
     'update' => 'Uuenda',
     'edit' => 'Muuda',
+    'archive' => 'Arhiveeri',
+    'unarchive' => 'Taasta arhiivist',
     'sort' => 'Sorteeri',
     'move' => 'Liiguta',
     'copy' => 'Kopeeri',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Privaatsus',
     'terms_of_service' => 'Kasutustingimused',
+
+    // OpenSearch
+    'opensearch_description' => 'Otsi :appName',
 ];

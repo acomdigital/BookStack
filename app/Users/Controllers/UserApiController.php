@@ -33,11 +33,11 @@ class UserApiController extends ApiController
         });
     }
 
-    protected function rules(int $userId = null): array
+    protected function rules(?int $userId = null): array
     {
         return [
             'create' => [
-                'name'  => ['required', 'string', 'min:2', 'max:100'],
+                'name'  => ['required', 'string', 'min:1', 'max:100'],
                 'email' => [
                     'required', 'string', 'email', 'min:2', new Unique('users', 'email'),
                 ],
@@ -49,12 +49,12 @@ class UserApiController extends ApiController
                 'send_invite'      => ['boolean'],
             ],
             'update' => [
-                'name'  => ['string', 'min:2', 'max:100'],
+                'name'  => ['string', 'min:1', 'max:100'],
                 'email' => [
                     'string',
                     'email',
                     'min:2',
-                    (new Unique('users', 'email'))->ignore($userId ?? null),
+                    (new Unique('users', 'email'))->ignore($userId),
                 ],
                 'external_auth_id' => ['string'],
                 'language'         => ['string', 'max:15', 'alpha_dash'],

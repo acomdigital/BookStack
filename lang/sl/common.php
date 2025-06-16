@@ -30,6 +30,8 @@ return [
     'create' => 'Ustvari',
     'update' => 'Posodobi',
     'edit' => 'Uredi',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Razvrsti',
     'move' => 'Premakni',
     'copy' => 'Kopiraj',
@@ -44,12 +46,12 @@ return [
     'configure' => 'Configure',
     'manage' => 'Manage',
     'fullscreen' => 'Celozaslonski način',
-    'favourite' => 'Favourite',
-    'unfavourite' => 'Unfavourite',
-    'next' => 'Next',
-    'previous' => 'Previous',
+    'favourite' => 'Priljubljeno',
+    'unfavourite' => 'Ni priljubljeno',
+    'next' => 'Naprej',
+    'previous' => 'Nazaj',
     'filter_active' => 'Active Filter:',
-    'filter_clear' => 'Clear Filter',
+    'filter_clear' => 'Počisti filter',
     'download' => 'Download',
     'open_in_tab' => 'Open in Tab',
     'open' => 'Open',
@@ -91,7 +93,7 @@ return [
     'edit_profile' => 'Uredi profil',
     'dark_mode' => 'Način temnega zaslona',
     'light_mode' => 'Način svetlega zaslona',
-    'global_search' => 'Global Search',
+    'global_search' => 'Globalno iskanje',
 
     // Layout tabs
     'tab_info' => 'Informacije',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Pravilnik o zasebnosti',
     'terms_of_service' => 'Pogoji uporabe',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

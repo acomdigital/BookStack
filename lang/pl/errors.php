@@ -37,7 +37,7 @@ return [
     'social_driver_not_found' => 'Funkcja społecznościowa nie została odnaleziona',
     'social_driver_not_configured' => 'Ustawienia konta :socialAccount nie są poprawne.',
     'invite_token_expired' => 'Zaproszenie wygasło. Możesz spróować zresetować swoje hasło.',
-    'login_user_not_found' => 'A user for this action could not be found.',
+    'login_user_not_found' => 'Użytkownik dla tej akcji nie został znaleziony.',
 
     // System
     'path_not_writable' => 'Zapis do ścieżki :filePath jest niemożliwy. Upewnij się że aplikacja ma prawa do zapisu plików na serwerze.',
@@ -78,6 +78,7 @@ return [
     // Users
     'users_cannot_delete_only_admin' => 'Nie możesz usunąć jedynego administratora',
     'users_cannot_delete_guest' => 'Nie możesz usunąć użytkownika-gościa',
+    'users_could_not_send_invite' => 'Nie można utworzyć użytkownika, ponieważ nie udało się wysłać wiadomości e-mail z zaproszeniem',
 
     // Roles
     'role_cannot_be_edited' => 'Ta rola nie może być edytowana',
@@ -103,6 +104,18 @@ return [
     'error_occurred' => 'Wystąpił błąd',
     'app_down' => ':appName jest aktualnie wyłączona',
     'back_soon' => 'Niedługo zostanie uruchomiona ponownie.',
+
+    // Import
+    'import_zip_cant_read' => 'Could not read ZIP file.',
+    'import_zip_cant_decode_data' => 'Could not find and decode ZIP data.json content.',
+    'import_zip_no_data' => 'ZIP file data has no expected book, chapter or page content.',
+    'import_validation_failed' => 'Import ZIP failed to validate with errors:',
+    'import_zip_failed_notification' => 'Failed to import ZIP file.',
+    'import_perms_books' => 'You are lacking the required permissions to create books.',
+    'import_perms_chapters' => 'You are lacking the required permissions to create chapters.',
+    'import_perms_pages' => 'You are lacking the required permissions to create pages.',
+    'import_perms_images' => 'You are lacking the required permissions to create images.',
+    'import_perms_attachments' => 'You are lacking the required permission to create attachments.',
 
     // API errors
     'api_no_authorization_found' => 'Nie znaleziono tokenu autoryzacji dla żądania',

@@ -30,6 +30,8 @@ return [
     'create' => 'Tạo',
     'update' => 'Cập nhật',
     'edit' => 'Sửa',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Sắp xếp',
     'move' => 'Di chuyển',
     'copy' => 'Sao chép',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Chính Sách Quyền Riêng Tư',
     'terms_of_service' => 'Điều khoản Dịch vụ',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

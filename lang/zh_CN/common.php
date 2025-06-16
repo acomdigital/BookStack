@@ -30,6 +30,8 @@ return [
     'create' => '创建',
     'update' => '更新',
     'edit' => '编辑',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => '排序',
     'move' => '移动',
     'copy' => '复制',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => '隐私政策',
     'terms_of_service' => '服务条款',
+
+    // OpenSearch
+    'opensearch_description' => '搜索 :appName',
 ];

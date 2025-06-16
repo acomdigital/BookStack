@@ -78,6 +78,7 @@ return [
     // Users
     'users_cannot_delete_only_admin' => 'Vous ne pouvez pas supprimer le dernier administrateur',
     'users_cannot_delete_guest' => 'Vous ne pouvez pas supprimer l\'utilisateur invité',
+    'users_could_not_send_invite' => 'Impossible de créer l\'utilisateur à cause d\'une erreur d\'envoi de l\'email d\'invitation',
 
     // Roles
     'role_cannot_be_edited' => 'Ce rôle ne peut pas être modifié',
@@ -103,6 +104,18 @@ return [
     'error_occurred' => 'Une erreur est survenue',
     'app_down' => ':appName n\'est pas en service pour le moment',
     'back_soon' => 'Nous serons bientôt de retour.',
+
+    // Import
+    'import_zip_cant_read' => 'Impossible de lire le fichier ZIP.',
+    'import_zip_cant_decode_data' => 'Impossible de trouver et de décoder le contenu ZIP data.json.',
+    'import_zip_no_data' => 'Les données du fichier ZIP n\'ont pas de livre, de chapitre ou de page attendus.',
+    'import_validation_failed' => 'L\'importation du ZIP n\'a pas été validée avec les erreurs :',
+    'import_zip_failed_notification' => 'Impossible d\'importer le fichier ZIP.',
+    'import_perms_books' => 'Vous n\'avez pas les permissions requises pour créer des livres.',
+    'import_perms_chapters' => 'Vous n\'avez pas les permissions requises pour créer des chapitres.',
+    'import_perms_pages' => 'Vous n\'avez pas les permissions requises pour créer des pages.',
+    'import_perms_images' => 'Vous n\'avez pas les permissions requises pour créer des images.',
+    'import_perms_attachments' => 'Vous n\'avez pas les permissions requises pour créer des pièces jointes.',
 
     // API errors
     'api_no_authorization_found' => 'Aucun jeton d\'autorisation trouvé pour la demande',

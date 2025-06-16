@@ -30,6 +30,8 @@ return [
     'create' => 'Létrehozás',
     'update' => 'Frissítés',
     'edit' => 'Szerkesztés',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Rendezés',
     'move' => 'Áthelyezés',
     'copy' => 'Másolás',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Adatvédelmi irányelvek',
     'terms_of_service' => 'Felhasználási feltételek',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

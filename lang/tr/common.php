@@ -30,6 +30,8 @@ return [
     'create' => 'Oluştur',
     'update' => 'Güncelle',
     'edit' => 'Düzenle',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Sırala',
     'move' => 'Taşı',
     'copy' => 'Kopyala',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Gizlilik Politikası',
     'terms_of_service' => 'Hizmet Şartları',
+
+    // OpenSearch
+    'opensearch_description' => 'Search :appName',
 ];

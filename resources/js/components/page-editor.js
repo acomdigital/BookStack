@@ -1,7 +1,7 @@
-import * as Dates from '../services/dates';
-import {onSelect} from '../services/dom';
-import {debounce} from '../services/util';
+import {onSelect} from '../services/dom.ts';
+import {debounce} from '../services/util.ts';
 import {Component} from './component';
+import {utcTimeStampToLocalTime} from '../services/dates.ts';
 
 export class PageEditor extends Component {
 
@@ -112,13 +112,13 @@ export class PageEditor extends Component {
     }
 
     savePage() {
-        this.container.closest('form').submit();
+        this.container.closest('form').requestSubmit();
     }
 
     async saveDraft() {
         const data = {name: this.titleElem.value.trim()};
 
-        const editorContent = this.getEditorComponent().getContent();
+        const editorContent = await this.getEditorComponent().getContent();
         Object.assign(data, editorContent);
 
         let didSave = false;
@@ -129,7 +129,7 @@ export class PageEditor extends Component {
                 this.deleteDraftWrap.toggleAttribute('hidden', false);
             }
 
-            this.draftNotifyChange(`${resp.data.message} ${Dates.utcTimeStampToLocalTime(resp.data.timestamp)}`);
+            this.draftNotifyChange(`${resp.data.message} ${utcTimeStampToLocalTime(resp.data.timestamp)}`);
             this.autoSave.last = Date.now();
             if (resp.data.warning && !this.shownWarningsCache.has(resp.data.warning)) {
                 window.$events.emit('warning', resp.data.warning);
@@ -138,7 +138,7 @@ export class PageEditor extends Component {
 
             didSave = true;
             this.autoSave.pendingChange = false;
-        } catch (err) {
+        } catch {
             // Save the editor content in LocalStorage as a last resort, just in case.
             try {
                 const saveKey = `draft-save-fail-${(new Date()).toISOString()}`;
@@ -235,10 +235,12 @@ export class PageEditor extends Component {
     }
 
     /**
-     * @return MarkdownEditor|WysiwygEditor
+     * @return {MarkdownEditor|WysiwygEditor|WysiwygEditorTinymce}
      */
     getEditorComponent() {
-        return window.$components.first('markdown-editor') || window.$components.first('wysiwyg-editor');
+        return window.$components.first('markdown-editor')
+            || window.$components.first('wysiwyg-editor')
+            || window.$components.first('wysiwyg-editor-tinymce');
     }
 
 }

@@ -37,7 +37,7 @@ return [
     'social_driver_not_found' => 'Драйвер для СоціальноїМережі не знайдено',
     'social_driver_not_configured' => 'Ваші соціальні настройки :socialAccount не правильно налаштовані.',
     'invite_token_expired' => 'Термін дії цього запрошення закінчився. Замість цього ви можете спробувати скинути пароль свого облікового запису.',
-    'login_user_not_found' => 'A user for this action could not be found.',
+    'login_user_not_found' => 'Користувач для цієї дії не знайдений.',
 
     // System
     'path_not_writable' => 'Не вдається завантажити шлях до файлу :filePath. Переконайтеся, що він доступний для запису на сервер.',
@@ -78,6 +78,7 @@ return [
     // Users
     'users_cannot_delete_only_admin' => 'Ви не можете видалити єдиного адміністратора',
     'users_cannot_delete_guest' => 'Ви не можете видалити гостьового користувача',
+    'users_could_not_send_invite' => 'Не вдалося створити користувача, оскільки не вдалося надіслати електронний лист із запрошенням',
 
     // Roles
     'role_cannot_be_edited' => 'Цю роль не можна редагувати',
@@ -103,6 +104,18 @@ return [
     'error_occurred' => 'Виникла помилка',
     'app_down' => ':appName зараз недоступний',
     'back_soon' => 'Він повернеться найближчим часом.',
+
+    // Import
+    'import_zip_cant_read' => 'Не вдалося прочитати ZIP-файл.',
+    'import_zip_cant_decode_data' => 'Не вдалося знайти і розшифрувати контент ZIP data.json.',
+    'import_zip_no_data' => 'ZIP-файл не містить очікуваної книги, глави або вмісту сторінки.',
+    'import_validation_failed' => 'Не вдалося виконати перевірку ZIP-адреси із помилками:',
+    'import_zip_failed_notification' => 'Не вдалося імпортувати ZIP-файл.',
+    'import_perms_books' => 'У Вас не вистачає необхідних прав для створення книг.',
+    'import_perms_chapters' => 'Вам не вистачає необхідних дозволів для створення розділів.',
+    'import_perms_pages' => 'У Вас немає необхідних прав для створення сторінок.',
+    'import_perms_images' => 'У Вас немає необхідних прав для створення зображень.',
+    'import_perms_attachments' => 'У Вас немає необхідних прав для створення вкладень.',
 
     // API errors
     'api_no_authorization_found' => 'У запиті не знайдено токен авторизації',

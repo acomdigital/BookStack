@@ -30,6 +30,8 @@ return [
     'create' => 'Izveidot',
     'update' => 'Atjaunināt',
     'edit' => 'Rediģēt',
+    'archive' => 'Archive',
+    'unarchive' => 'Un-Archive',
     'sort' => 'Kārtot',
     'move' => 'Pārvietot',
     'copy' => 'Kopēt',
@@ -107,4 +109,7 @@ return [
     // Not directly used but available for convenience to users.
     'privacy_policy' => 'Privātuma politika',
     'terms_of_service' => 'Pakalpojuma noteikumi',
+
+    // OpenSearch
+    'opensearch_description' => 'Meklēt :appName',
 ];
