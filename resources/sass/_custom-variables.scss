@@ -4,7 +4,20 @@ $screen-lg: 1200px;
 $screen-md: 992px;
 $screen-sm: 768px;
 // List of our spacing sizes
-$spacing: (('none', 0), ('xxs', $-xxs), ('xs', $-xs), ('s', $-s), ('m', $-m), ('l', $-l), ('xl', $-xl), ('xxl', $-xxl));
+$xxxl: 64px;
+$xxl: 48px;
+$xl: 32px;
+$l: 24px;
+$m: 16px;
+$s: 12px;
+$xs: 6px;
+$xxs: 3px;
+
+// List of our spacing sizes
+$spacing: (('none', 0), ('xxs', $xxs), ('xs', $xs), ('s', $s), ('m', $m), ('l', $l), ('xl', $xl), ('xxl', $xxl), ('auto', auto));
+
+$fs-m: 14px;
+$fs-s: 12px;
 // Fonts
 $text: 'Roboto', sans-serif;
 $mono: 'Roboto', sans-serif;
