@@ -1,6 +1,9 @@
 @use "sass:math";
 @use 'mixins' as *;
 
+*:focus{
+    outline: none;
+}
 // ==================
 // @import "html";
 // ==================
@@ -277,6 +280,33 @@ table {
 	word-break: initial;
   }
 }
+table.form-table td {
+    overflow: initial;
+    padding: 5px 0;
+    vertical-align: middle;
+    .text-neg {
+        color: var(--color-primary) !important;
+        fill: var(--color-primary) !important;
+        &:hover,
+        &:focus{
+            background: transparent;
+            color: #555 !important;
+            fill: #555 !important;
+        }
+    }
+}
+.icon-button{
+    .text-neg {
+        color: var(--color-primary) !important;
+        fill: var(--color-primary) !important;
+        &:hover,
+        &:focus{
+            background: transparent;
+            color: #555 !important;
+            fill: #555 !important;
+        }
+    }
+}
 
 
 // ==================
@@ -289,7 +319,6 @@ body, button, input, select, label, textarea {
 .input-base {
   border-radius: 4px;
   border: 1px solid;
-  //@include lightDark(background-color, #f2f2f2, #333);
   @include lightDark(border-color, #CFCFCF, $text-light);
   @include lightDark(color, $text-dark, $text-light);
   transition: box-shadow .15s ease-in-out;
@@ -309,6 +338,11 @@ body, button, input, select, label, textarea {
 
 .input-fill-width {
   width: initial;
+}
+
+input[type="text"], input[type="number"], input[type="email"], input[type="date"], input[type="search"], input[type="url"],
+input[type="color"], input[type="password"], select, textarea {
+    @extend .input-base;
 }
 
 #markdown-editor {
@@ -493,10 +527,19 @@ header {
   @include whenDark {
 	filter: none;
   }
+    & *{
+        &,
+        &:focus{
+            outline: none;
+        }
+    }
 }
 
 header .links a {
   @include lightDark(color, $text-dark, $text-light);
+    &:hover{
+        color: #484c93;
+    }
 }
 
 .header-search {
@@ -685,7 +728,16 @@ header .search-box {
 .card .activity-list-item {
   padding: 8px 28px;
 }
-
+.card.drag-card .drag-card-action{
+    color: var(--color-primary) !important;
+    fill: var(--color-primary) !important;
+    &:hover,
+    &:focus{
+        background: transparent;
+        color: #555 !important;
+        fill: #555 !important;
+    }
+}
 .entity-list-item, .icon-list-item {
   padding: 8px 28px;
 

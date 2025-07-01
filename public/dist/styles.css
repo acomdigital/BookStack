@@ -7975,12 +7975,16 @@ html.dark-mode .callout.warning {
 :root, body {
   --color-primary: #929292 !important;
   --color-primary-light: #f2f2f2 !important;
-  --color-link: #929292 !important;
+  --color-link: #484c93 !important;
   --color-page: #206ea7 !important;
-  --color-page-draft: #7e50b1 !important;
+  --color-page-draft: #484c93 !important;
   --color-chapter: #af4d0d !important;
   --color-book: #077b70 !important;
   --color-bookshelf: #a94747 !important;
+}
+
+*:focus {
+  outline: none;
 }
 
 html {
@@ -8236,31 +8240,61 @@ table td, table th {
   word-break: initial;
 }
 
+table.form-table td {
+  overflow: initial;
+  padding: 5px 0;
+  vertical-align: middle;
+}
+table.form-table td .text-neg {
+  color: var(--color-primary) !important;
+  fill: var(--color-primary) !important;
+}
+table.form-table td .text-neg:hover, table.form-table td .text-neg:focus {
+  background: transparent;
+  color: #555 !important;
+  fill: #555 !important;
+}
+
+.icon-button .text-neg {
+  color: var(--color-primary) !important;
+  fill: var(--color-primary) !important;
+}
+.icon-button .text-neg:hover, .icon-button .text-neg:focus {
+  background: transparent;
+  color: #555 !important;
+  fill: #555 !important;
+}
+
 body, button, input, select, label, textarea {
   font-family: "Roboto", sans-serif;
 }
 
-.input-base {
+.input-base, input[type=text], input[type=number], input[type=email], input[type=date], input[type=search], input[type=url],
+input[type=color], input[type=password], select, textarea {
   border-radius: 4px;
   border: 1px solid;
   border-color: #CFCFCF;
   color: #929292;
   transition: box-shadow 0.15s ease-in-out;
 }
-html.dark-mode .input-base {
+html.dark-mode .input-base, html.dark-mode input[type=text], html.dark-mode input[type=number], html.dark-mode input[type=email], html.dark-mode input[type=date], html.dark-mode input[type=search], html.dark-mode input[type=url],
+html.dark-mode input[type=color], html.dark-mode input[type=password], html.dark-mode select, html.dark-mode textarea {
   border-color: #f6f6f6;
 }
-html.dark-mode .input-base {
+html.dark-mode .input-base, html.dark-mode input[type=text], html.dark-mode input[type=number], html.dark-mode input[type=email], html.dark-mode input[type=date], html.dark-mode input[type=search], html.dark-mode input[type=url],
+html.dark-mode input[type=color], html.dark-mode input[type=password], html.dark-mode select, html.dark-mode textarea {
   color: #f6f6f6;
 }
-.input-base:focus {
+.input-base:focus, input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input[type=date]:focus, input[type=search]:focus, input[type=url]:focus,
+input[type=color]:focus, input[type=password]:focus, select:focus, textarea:focus {
   outline: none;
   border-width: 1px;
   border-color: #cfcfcf !important;
   box-shadow: 0 0 0 0.25rem rgba(50, 31, 219, 0.25) !important;
   -webkit-box-shadow: 0 0 0 0.25rem rgba(50, 31, 219, 0.25) !important;
 }
-.input-base::placeholder {
+.input-base::placeholder, input[type=text]::placeholder, input[type=number]::placeholder, input[type=email]::placeholder, input[type=date]::placeholder, input[type=search]::placeholder, input[type=url]::placeholder,
+input[type=color]::placeholder, input[type=password]::placeholder, select::placeholder, textarea::placeholder {
   color: #929292;
 }
 
@@ -8447,12 +8481,18 @@ html.dark-mode header {
 html.dark-mode header {
   filter: none;
 }
+header *, header *:focus {
+  outline: none;
+}
 
 header .links a {
   color: #929292;
 }
 html.dark-mode header .links a {
   color: #f6f6f6;
+}
+header .links a:hover {
+  color: #484c93;
 }
 
 @media screen and (min-width: 25px) {
@@ -8678,6 +8718,16 @@ html.dark-mode .activity-list-item small {
 
 .card .activity-list-item {
   padding: 8px 28px;
+}
+
+.card.drag-card .drag-card-action {
+  color: var(--color-primary) !important;
+  fill: var(--color-primary) !important;
+}
+.card.drag-card .drag-card-action:hover, .card.drag-card .drag-card-action:focus {
+  background: transparent;
+  color: #555 !important;
+  fill: #555 !important;
 }
 
 .entity-list-item, .icon-list-item {
