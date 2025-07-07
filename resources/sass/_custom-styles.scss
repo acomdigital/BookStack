@@ -307,8 +307,19 @@ table.form-table td {
         }
     }
 }
-
-
+#search-system {
+    .text-neg {
+        color: var(--color-primary) !important;
+        fill: var(--color-primary) !important;
+        &:hover,
+        &:focus{
+            background: transparent;
+            border-color: transparent;
+            color: #555 !important;
+            fill: #555 !important;
+        }
+    }
+}
 // ==================
 // @import "forms";
 // ==================

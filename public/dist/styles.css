@@ -8265,6 +8265,17 @@ table.form-table td .text-neg:hover, table.form-table td .text-neg:focus {
   fill: #555 !important;
 }
 
+#search-system .text-neg {
+  color: var(--color-primary) !important;
+  fill: var(--color-primary) !important;
+}
+#search-system .text-neg:hover, #search-system .text-neg:focus {
+  background: transparent;
+  border-color: transparent;
+  color: #555 !important;
+  fill: #555 !important;
+}
+
 body, button, input, select, label, textarea {
   font-family: "Roboto", sans-serif;
 }
