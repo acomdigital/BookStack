@@ -102,6 +102,8 @@ else
   echoerr "wait-for-db: timeout out after 30 seconds waiting for ${DB_HOST_NAME}:${DB_PORT}"
 fi
 
+composer install
+
 echo "Generating Key..."
 php artisan key:generate --show
 

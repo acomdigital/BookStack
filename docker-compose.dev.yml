@@ -15,17 +15,17 @@ services:
     image: docker.qix.sx/elexis/bookstack:v25.05-ee
     build:
       context: .
-      dockerfile: ./dev/docker/Dockerfile
+      dockerfile: ./Dockerfile-apache
     environment:
       DB_CONNECTION: mysql
+      DB_HOST: db
       TEST_DATABASE_URL: mysql://bookstack-test:bookstack-test@db/bookstack-test
       MAIL_DRIVER: smtp
       MAIL_HOST: mailhog
       MAIL_PORT: 1025
     ports:
-      - ${DEV_PORT:-8080}:80
+      - ${DEV_PORT:-8080}:8080
     volumes:
       - ./:/app
-    entrypoint: /app/dev/docker/entrypoint.app.sh
 volumes:
   db:

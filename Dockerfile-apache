@@ -1,5 +1,5 @@
 # Build js and css
-FROM node:lts-alpine as node_build
+FROM node:lts-alpine AS node_build
 WORKDIR /www
 COPY package.json ./
 RUN npm install
@@ -8,36 +8,31 @@ COPY public/ ./public/
 COPY dev/build/ ./dev/build/
 RUN npm run production
 
-FROM php:8.1-apache-buster as final
-RUN set -x; \
-    apt-get update \
-    && apt-get install -y --no-install-recommends \
+FROM php:8.3-apache AS final
+
+# Install additional dependencies
+RUN apt-get update && \
+    apt-get install -y \
         git \
-        zlib1g-dev \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libmcrypt-dev \
-        libpng-dev  \
-        libldap2-dev  \
-        libtidy-dev  \
-        libxml2-dev  \
-        fontconfig  \
-        fonts-freefont-ttf   \
-        wget \
-        tar \
-        curl \
-        libzip-dev \
+        zip \
         unzip \
-	&& wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.buster_amd64.deb \
-	&& chmod a+x ./wkhtmltox_0.12.6-1.buster_amd64.deb \
-    && apt-get install -y ./wkhtmltox_0.12.6-1.buster_amd64.deb \
-    && rm ./wkhtmltox_0.12.6-1.buster_amd64.deb \
-    && docker-php-ext-install -j$(nproc) dom pdo pdo_mysql zip tidy  \
-    && docker-php-ext-configure ldap \
-    && docker-php-ext-install -j$(nproc) ldap \
-    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
-RUN apt-get remove -y git && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+        libfreetype-dev \
+        libjpeg62-turbo-dev \
+        libldap2-dev \
+        libpng-dev \
+        libzip-dev \
+        wait-for-it && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions
+RUN docker-php-ext-configure ldap --with-libdir="lib/$(gcc -dumpmachine)" && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install -j$(nproc) pdo_mysql gd ldap zip && \
+    pecl install xdebug && \
+    docker-php-ext-enable xdebug
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN a2enmod rewrite remoteip; \
     { \
@@ -53,14 +48,6 @@ COPY dev/ee/apache/bookstack.conf /etc/apache2/sites-available/000-default.conf
 
 COPY --chown=33:33 . /var/www/bookstack/
 COPY --from=node_build /www/public/dist /var/www/bookstack/public/dist/
-
-ARG COMPOSER_VERSION=2.1.12
-RUN set -x; \
-    cd /var/www/bookstack \
-    && curl -sS https://getcomposer.org/installer | php -- --version=$COMPOSER_VERSION \
-    && /var/www/bookstack/composer.phar install -v -d /var/www/bookstack/ \
-    && rm -rf /var/www/bookstack/composer.phar /root/.composer \
-    && chown -R www-data:www-data /var/www/bookstack
 
 COPY dev/ee/apache/php.ini /usr/local/etc/php/php.ini
 COPY --chmod=775 dev/ee/apache/docker-entrypoint.sh /bin/docker-entrypoint.sh
