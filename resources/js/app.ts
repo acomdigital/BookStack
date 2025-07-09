@@ -4,6 +4,7 @@ import {Translator} from './services/translations';
 import * as componentMap from './components/index';
 import {ComponentStore} from './services/components';
 import {baseUrl, importVersioned} from "./services/util";
+import { elxsNavigation } from './addons/header';
 
 // eslint-disable-next-line no-underscore-dangle
 window.__DEV__ = false;
@@ -21,3 +22,5 @@ window.$trans = new Translator();
 window.$components = new ComponentStore();
 window.$components.register(componentMap);
 window.$components.init();
+
+elxsNavigation.run();

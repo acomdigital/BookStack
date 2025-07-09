@@ -8,7 +8,7 @@ const cumulativeOffset = function (element) {
     return {offsetTop, offsetLeft};
 };
 
-const elxsNavigation = {
+export const elxsNavigation = {
     initialized: false,
     logoSelectors: [
         '#header .logo',
@@ -222,7 +222,7 @@ const elxsNavigation = {
                     width: 50%;
                     text-align: center;
                     font-size: 12px;
-                    font-family: apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Cantarell, Ubuntu, Helvetica Neue, Arial, Noto Color Emoji, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+                    font-family: 'Roboto';
                     font-weight: 300;
                     color: #929292;
                     transition: .15s ease-in-out;
@@ -274,6 +274,7 @@ const elxsNavigation = {
     run() {
         return this.loadConfig()
             .then((configObject) => {
+                
                 this.renderStyles();
                 this.logoSelectors.forEach((selector) => {
                     const el = document.querySelector(selector);
@@ -333,4 +334,4 @@ const elxsNavigation = {
     },
 };
 
-elxsNavigation.run();
+// elxsNavigation.run();
