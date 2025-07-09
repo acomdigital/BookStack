@@ -222,7 +222,7 @@ export const elxsNavigation = {
                     width: 50%;
                     text-align: center;
                     font-size: 12px;
-                    font-family: 'Roboto';
+                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Cantarell, Ubuntu, Helvetica Neue, Arial, Noto Color Emoji, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
                     font-weight: 300;
                     color: #929292;
                     transition: .15s ease-in-out;
