@@ -1,4 +1,3 @@
-version: '3'
 services:
   db:
     image: mysql:8.0
@@ -12,7 +11,7 @@ services:
       - db:/var/lib/mysql
 
   app:
-    image: docker.qix.sx/elexis/bookstack:v25.05-ee
+    image: docker.qix.sx/elexis/bookstack:v25.05.02-ee
     build:
       context: .
       dockerfile: ./Dockerfile-apache
