@@ -60,9 +60,13 @@ return [
     'import_location' => 'Vị trí nhập',
     'import_location_desc' => 'Chọn vị trí đích cho nội dung đã nhập của bạn. Bạn sẽ cần các quyền liên quan để tạo trong vị trí bạn chọn.',
     'import_delete_confirm' => 'Bạn có chắc chắn muốn xóa lượt nhập này không?',
-    'import_delete_desc' => 'Thao tác này sẽ xóa tệp ZIP nhập đã tải lên và không thể hoàn tác.',
-    'import_errors' => 'Lỗi nhập',
+    'import_delete_desc' => 'Thao tác này sẽ xóa tệp ZIP đã tải lên, và không thể hoàn tác.',
+    'import_errors' => 'Lỗi khi nhập dữ liệu',
     'import_errors_desc' => 'Các lỗi sau đã xảy ra trong quá trình nhập:',
+    'breadcrumb_siblings_for_page' => 'Điều hướng anh chị em cho trang',
+    'breadcrumb_siblings_for_chapter' => 'Điều hướng anh chị em cho chương',
+    'breadcrumb_siblings_for_book' => 'Điều hướng anh chị em cho sách',
+    'breadcrumb_siblings_for_bookshelf' => 'Điều hướng anh chị em cho kệ sách',
 
     // Permissions and restrictions
     'permissions' => 'Quyền',
@@ -268,6 +272,7 @@ return [
     'pages_md_insert_drawing' => 'Chèn bản vẽ',
     'pages_md_show_preview' => 'Hiển thị bản xem trước',
     'pages_md_sync_scroll' => 'Đồng bộ hóa cuộn xem trước',
+    'pages_md_plain_editor' => 'Trình soạn thảo văn bản thuần túy',
     'pages_drawing_unsaved' => 'Tìm thấy bản vẽ chưa lưu',
     'pages_drawing_unsaved_confirm' => 'Dữ liệu bản vẽ chưa lưu được tìm thấy từ lần lưu bản vẽ không thành công trước đó. Bạn có muốn khôi phục và tiếp tục chỉnh sửa bản vẽ chưa lưu này không?',
     'pages_not_in_chapter' => 'Trang không nằm trong một chương',

@@ -5,7 +5,7 @@
 [![Crowdin](https://badges.crowdin.net/bookstack/localized.svg)](https://crowdin.com/project/bookstack)
 [![Build Status](https://github.com/BookStackApp/BookStack/workflows/test-php/badge.svg)](https://github.com/BookStackApp/BookStack/actions)
 [![Lint Status](https://github.com/BookStackApp/BookStack/workflows/lint-php/badge.svg)](https://github.com/BookStackApp/BookStack/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/5551731994dd22fa1f4f/maintainability)](https://codeclimate.com/github/BookStackApp/BookStack/maintainability)
+[![php-metrics](https://img.shields.io/static/v1?label=Metrics&message=php&color=4F5B93)](https://source.bookstackapp.com/php-stats/index.html)
 <br>
 [![Alternate Source](https://img.shields.io/static/v1?label=Alt+Source&message=Git&color=ef391a&logo=git)](https://source.bookstackapp.com/)
 [![Repo Stats](https://img.shields.io/static/v1?label=GitHub+project&message=stats&color=f27e3f)](https://gh-stats.bookstackapp.com/)
@@ -48,47 +48,52 @@ Big thanks to these companies for supporting the project.
 #### Gold Sponsor
 
 <table><tbody><tr>
-<td align="center"><a href="https://www.federated.computer/bookstack-wiki" target="_blank">
+<td align="center"><a href="https://www.federated.computer/bookstack" target="_blank">
     <img width="480" src="https://www.bookstackapp.com/images/sponsors/federated-computer.png" alt="Federated.computer">
 </a></td>
-</tr></tbody></table>
+</tr><tr>
+<td align="center"><a href="https://www.diagrams.net/" target="_blank">
+    <img width="480" src="https://www.bookstackapp.com/images/sponsors/diagramsnet.png" alt="Diagrams.net">
+</a></td>
+</tr>
+</tbody></table>
 
 #### Bronze Sponsors
 
 <table><tbody><tr>
-<td align="center"><a href="https://www.diagrams.net/" target="_blank">
-    <img width="240" src="https://www.bookstackapp.com/images/sponsors/diagramsnet.png" alt="Diagrams.net">
-</a></td>
 <td align="center"><a href="https://cloudabove.com/hosting" target="_blank">
     <img width="200" src="https://www.bookstackapp.com/images/sponsors/cloudabove.png" alt="Cloudabove">
 </a></td>
-</tr><tr>
 <td align="center"><a href="https://www.practicali.be" target="_blank">
     <img width="240" src="https://www.bookstackapp.com/images/sponsors/practicali.png" alt="Practicali">
 </a></td>
+</tr><tr>
 <td align="center"><a href="https://www.stellarhosted.com/bookstack/" target="_blank">
     <img width="240" src="https://www.bookstackapp.com/images/sponsors/stellarhosted.png" alt="Stellar Hosted">
 </a></td>
-</tr>
-<tr>
 <td align="center" style="text-align: center"><a href="https://nws.netways.de/apps/bookstack/" target="_blank">
     <img width="240" src="https://www.bookstackapp.com/images/sponsors/netways.png" alt="NETWAYS Web Services">
 </a></td>
+</tr>
+<tr>
 <td align="center" style="text-align: center"><a href="https://www.schroeck-consulting.de/" target="_blank">
     <img width="200" src="https://www.bookstackapp.com/images/sponsors/schroeck-consulting.png" alt="Schroeck IT Consulting">
 </a></td>
-</tr>
-<tr>
 <td align="center"><a href="https://practinet.be/" target="_blank">
     <img width="240" src="https://www.bookstackapp.com/images/sponsors/practinet.png" alt="Practinet">
 </a></td>
+</tr>
+<tr>
 <td align="center"><a href="https://route4me.com/" target="_blank">
     <img width="240" src="https://www.bookstackapp.com/images/sponsors/route4me.png" alt="Route4Me - Route Optimizer and Route Planner Software">
 </a></td>
+<td align="center"><a href="https://phamos.eu" target="_blank">
+    <img width="136" src="https://www.bookstackapp.com/images/sponsors/phamos.png" alt="phamos">
+</a></td>
 </tr>
 <tr>
-<td colspan="2" align="center"><a href="https://phamos.eu" target="_blank">
-    <img width="136" src="https://www.bookstackapp.com/images/sponsors/phamos.png" alt="phamos">
+<td align="center" colspan="2"><a href="https://sitespeak.ai/bookstack" target="_blank">
+    <img width="240" src="https://www.bookstackapp.com/images/sponsors/sitespeak.png" alt="SiteSpeakAI">
 </a></td>
 </tr>
 </tbody></table>
@@ -103,7 +108,7 @@ Details about BookStack's versioning scheme and the general release process [can
 
 ## 🌎 Translations
 
-Translations for text within BookStack is managed through the [BookStack project on Crowdin](https://crowdin.com/project/bookstack). Some strings have colon-prefixed variables such as `:userName`. Leave these values as they are as they will be replaced at run-time.
+Translations for text within BookStack are managed through the [BookStack project on Crowdin](https://crowdin.com/project/bookstack). Some strings have colon-prefixed variables such as `:userName`. Leave these values as they are as they will be replaced at run-time.
 
 Please use [Crowdin](https://crowdin.com/project/bookstack) to contribute translations instead of opening a pull request. The translations within the working codebase can be out-of-date, and merging via code can cause conflicts & sync issues. If for some reason you can't use Crowdin feel free to open an issue to discuss alternative options. 
 

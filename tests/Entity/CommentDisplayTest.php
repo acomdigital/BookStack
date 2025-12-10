@@ -60,7 +60,6 @@ class CommentDisplayTest extends TestCase
         $page = $this->entities->page();
 
         $resp = $this->actingAs($editor)->get($page->getUrl());
-        $resp->assertSee('tinymce.min.js?', false);
         $resp->assertSee('window.editor_translations', false);
         $resp->assertSee('component="entity-selector"', false);
 
@@ -68,18 +67,16 @@ class CommentDisplayTest extends TestCase
         $this->permissions->grantUserRolePermissions($editor, ['comment-update-own']);
 
         $resp = $this->actingAs($editor)->get($page->getUrl());
-        $resp->assertDontSee('tinymce.min.js?', false);
         $resp->assertDontSee('window.editor_translations', false);
         $resp->assertDontSee('component="entity-selector"', false);
 
         Comment::factory()->create([
             'created_by'  => $editor->id,
-            'entity_type' => 'page',
-            'entity_id'   => $page->id,
+            'commentable_type' => 'page',
+            'commentable_id'   => $page->id,
         ]);
 
         $resp = $this->actingAs($editor)->get($page->getUrl());
-        $resp->assertSee('tinymce.min.js?', false);
         $resp->assertSee('window.editor_translations', false);
         $resp->assertSee('component="entity-selector"', false);
     }
@@ -87,7 +84,7 @@ class CommentDisplayTest extends TestCase
     public function test_comment_displays_relative_times()
     {
         $page = $this->entities->page();
-        $comment = Comment::factory()->create(['entity_id' => $page->id, 'entity_type' => $page->getMorphClass()]);
+        $comment = Comment::factory()->create(['commentable_id' => $page->id, 'commentable_type' => $page->getMorphClass()]);
         $comment->created_at = now()->subWeek();
         $comment->updated_at = now()->subDay();
         $comment->save();

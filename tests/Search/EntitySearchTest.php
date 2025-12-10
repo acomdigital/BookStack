@@ -27,6 +27,12 @@ class EntitySearchTest extends TestCase
         $search->assertSeeText($shelf->name, true);
     }
 
+    public function test_search_shows_pagination()
+    {
+        $search = $this->asEditor()->get('/search?term=a');
+        $this->withHtml($search)->assertLinkExists('/search?term=a&page=2', '2');
+    }
+
     public function test_invalid_page_search()
     {
         $resp = $this->asEditor()->get('/search?term=' . urlencode('<p>test</p>'));
@@ -370,6 +376,21 @@ class EntitySearchTest extends TestCase
 
         $search = $this->asEditor()->get('/search?term=' . urlencode('На мен ми трябва нещо добро'));
         $search->assertSee('<strong>На</strong> <strong>мен</strong> <strong>ми</strong> <strong>трябва</strong> <strong>нещо</strong> <strong>добро</strong> test', false);
+    }
+
+    public function test_match_highlighting_is_efficient_with_large_frequency_in_content()
+    {
+        $content = str_repeat('superbeans ', 10000);
+        $this->entities->newPage([
+            'name' => 'Test Page',
+            'html' => "<p>{$content}</p>",
+        ]);
+
+        $time = microtime(true);
+        $resp = $this->asEditor()->get('/search?term=' . urlencode('superbeans'));
+        $this->assertLessThan(0.5, microtime(true) - $time);
+
+        $resp->assertSee('<strong>superbeans</strong>', false);
     }
 
     public function test_html_entities_in_item_details_remains_escaped_in_search_results()

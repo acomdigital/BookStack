@@ -7,6 +7,8 @@ use BookStack\Entities\Queries\BookQueries;
 use BookStack\Entities\Tools\BookContents;
 use BookStack\Facades\Activity;
 use BookStack\Http\Controller;
+use BookStack\Permissions\Permission;
+use BookStack\Util\DatabaseTransaction;
 use Illuminate\Http\Request;
 
 class BookSortController extends Controller
@@ -22,7 +24,7 @@ class BookSortController extends Controller
     public function show(string $bookSlug)
     {
         $book = $this->queries->findVisibleBySlugOrFail($bookSlug);
-        $this->checkOwnablePermission('book-update', $book);
+        $this->checkOwnablePermission(Permission::BookUpdate, $book);
 
         $bookChildren = (new BookContents($book))->getTree(false);
 
@@ -50,21 +52,23 @@ class BookSortController extends Controller
     public function update(Request $request, BookSorter $sorter, string $bookSlug)
     {
         $book = $this->queries->findVisibleBySlugOrFail($bookSlug);
-        $this->checkOwnablePermission('book-update', $book);
+        $this->checkOwnablePermission(Permission::BookUpdate, $book);
         $loggedActivityForBook = false;
 
         // Sort via map
         if ($request->filled('sort-tree')) {
-            $sortMap = BookSortMap::fromJson($request->get('sort-tree'));
-            $booksInvolved = $sorter->sortUsingMap($sortMap);
+            (new DatabaseTransaction(function () use ($book, $request, $sorter, &$loggedActivityForBook) {
+                $sortMap = BookSortMap::fromJson($request->get('sort-tree'));
+                $booksInvolved = $sorter->sortUsingMap($sortMap);
 
-            // Rebuild permissions and add activity for involved books.
-            foreach ($booksInvolved as $bookInvolved) {
-                Activity::add(ActivityType::BOOK_SORT, $bookInvolved);
-                if ($bookInvolved->id === $book->id) {
-                    $loggedActivityForBook = true;
+                // Add activity for involved books.
+                foreach ($booksInvolved as $bookInvolved) {
+                    Activity::add(ActivityType::BOOK_SORT, $bookInvolved);
+                    if ($bookInvolved->id === $book->id) {
+                        $loggedActivityForBook = true;
+                    }
                 }
-            }
+            }))->run();
         }
 
         if ($request->filled('auto-sort')) {

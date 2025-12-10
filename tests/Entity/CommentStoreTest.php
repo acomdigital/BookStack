@@ -14,6 +14,7 @@ class CommentStoreTest extends TestCase
         $this->asAdmin();
         $page = $this->entities->page();
 
+        Comment::factory()->create(['commentable_id' => $page->id, 'commentable_type' => 'page', 'local_id' => 2]);
         $comment = Comment::factory()->make(['parent_id' => 2]);
         $resp = $this->postJson("/comment/$page->id", $comment->getAttributes());
 
@@ -24,10 +25,9 @@ class CommentStoreTest extends TestCase
         $pageResp->assertSee($comment->html, false);
 
         $this->assertDatabaseHas('comments', [
-            'local_id'    => 1,
-            'entity_id'   => $page->id,
-            'entity_type' => Page::newModelInstance()->getMorphClass(),
-            'text'        => null,
+            'local_id'    => 3,
+            'commentable_id'   => $page->id,
+            'commentable_type' => 'page',
             'parent_id'   => 2,
         ]);
 
@@ -53,9 +53,9 @@ class CommentStoreTest extends TestCase
             ]);
 
             if ($valid) {
-                $this->assertDatabaseHas('comments', ['entity_id' => $page->id, 'content_ref' => $ref]);
+                $this->assertDatabaseHas('comments', ['commentable_id' => $page->id, 'content_ref' => $ref]);
             } else {
-                $this->assertDatabaseMissing('comments', ['entity_id' => $page->id, 'content_ref' => $ref]);
+                $this->assertDatabaseMissing('comments', ['commentable_id' => $page->id, 'content_ref' => $ref]);
             }
         }
     }
@@ -80,7 +80,7 @@ class CommentStoreTest extends TestCase
 
         $this->assertDatabaseHas('comments', [
             'html'      => $newHtml,
-            'entity_id' => $page->id,
+            'commentable_id' => $page->id,
         ]);
 
         $this->assertActivityExists(ActivityType::COMMENT_UPDATE);
@@ -193,13 +193,14 @@ class CommentStoreTest extends TestCase
     {
         $page = $this->entities->page();
 
-        $script = '<script>const a = "script";</script><p onclick="1">My lovely comment</p>';
+        $script = '<script>const a = "script";</script><script>const b = "sneakyscript";</script><p onclick="1">My lovely comment</p>';
         $this->asAdmin()->postJson("/comment/$page->id", [
             'html' => $script,
         ]);
 
         $pageView = $this->get($page->getUrl());
         $pageView->assertDontSee($script, false);
+        $pageView->assertDontSee('sneakyscript', false);
         $pageView->assertSee('<p>My lovely comment</p>', false);
 
         $comment = $page->comments()->first();
@@ -209,6 +210,7 @@ class CommentStoreTest extends TestCase
 
         $pageView = $this->get($page->getUrl());
         $pageView->assertDontSee($script, false);
+        $pageView->assertDontSee('sneakyscript', false);
         $pageView->assertSee('<p>My lovely comment</p><p>updated</p>');
     }
 
@@ -216,8 +218,8 @@ class CommentStoreTest extends TestCase
     {
         $page = $this->entities->page();
         Comment::factory()->create([
-            'html' => '<script>superbadscript</script><p onclick="superbadonclick">scriptincommentest</p>',
-            'entity_type' => 'page', 'entity_id' => $page
+            'html' => '<script>superbadscript</script><script>superbadscript</script><p onclick="superbadonclick">scriptincommentest</p>',
+            'commentable_type' => 'page', 'commentable_id' => $page
         ]);
 
         $resp = $this->asAdmin()->get($page->getUrl());
@@ -229,15 +231,38 @@ class CommentStoreTest extends TestCase
     public function test_comment_html_is_limited()
     {
         $page = $this->entities->page();
-        $input = '<h1>Test</h1><p id="abc" href="beans">Content<a href="#cat" data-a="b">a</a><section>Hello</section></p>';
+        $input = '<h1>Test</h1><p id="abc" href="beans">Content<a href="#cat" data-a="b">a</a><section>Hello</section><section>there</section></p>';
         $expected = '<p>Content<a href="#cat">a</a></p>';
 
         $resp = $this->asAdmin()->post("/comment/{$page->id}", ['html' => $input]);
         $resp->assertOk();
         $this->assertDatabaseHas('comments', [
-           'entity_type' => 'page',
-           'entity_id' => $page->id,
+           'commentable_type' => 'page',
+           'commentable_id' => $page->id,
            'html' => $expected,
+        ]);
+
+        $comment = $page->comments()->first();
+        $resp = $this->put("/comment/{$comment->id}", ['html' => $input]);
+        $resp->assertOk();
+        $this->assertDatabaseHas('comments', [
+            'id'   => $comment->id,
+            'html' => $expected,
+        ]);
+    }
+
+    public function test_comment_html_spans_are_cleaned()
+    {
+        $page = $this->entities->page();
+        $input = '<p><span class="beans">Hello</span> do you have <span style="white-space: discard;">biscuits</span>?</p>';
+        $expected = '<p><span>Hello</span> do you have <span>biscuits</span>?</p>';
+
+        $resp = $this->asAdmin()->post("/comment/{$page->id}", ['html' => $input]);
+        $resp->assertOk();
+        $this->assertDatabaseHas('comments', [
+            'commentable_type' => 'page',
+            'commentable_id' => $page->id,
+            'html' => $expected,
         ]);
 
         $comment = $page->comments()->first();
