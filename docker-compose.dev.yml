@@ -11,7 +11,7 @@ services:
       - db:/var/lib/mysql
 
   app:
-    image: docker.qix.sx/elexis/bookstack:v25.05.02-ee
+    image: docker.qix.sx/elexis/bookstack:v25.11.6-ee
     build:
       context: .
       dockerfile: ./Dockerfile-apache
