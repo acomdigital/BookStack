@@ -546,6 +546,9 @@ header {
     }
 }
 
+html:not(.dark-mode) header .user-name {
+    color: var(--color-primary);
+}
 header .links a {
   @include lightDark(color, $text-dark, $text-light);
     &:hover{
@@ -1078,4 +1081,13 @@ div[component="pointer"] {
             border-radius: 4px;
         }
     }
+}
+//new hovers
+.card .entity-list-item:not(.no-hover,.book-contents .entity-list-item):hover,
+.entity-list-item:not(.no-hover):hover, .icon-list-item:not(.no-hover):hover,
+.active-link-list a:hover,
+.card .entity-list-item:not(.no-hover):hover,
+.dropdown-menu .icon-item:hover, .dropdown-menu .icon-item:focus, .dropdown-menu .text-item:hover, .dropdown-menu .text-item:focus, .dropdown-menu .label-item:hover, .dropdown-menu .label-item:focus,
+.active-link-list.in-sidebar a.active {
+    background-color: #f4f4f8;
 }
